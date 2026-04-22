@@ -894,12 +894,12 @@
         <div class="education-card">
           <span class="education-card__eyebrow">2020.03 ~ 2022.02 | 졸업</span>
           <strong>숭실사이버대학교</strong>
-          <p>ICT공학 (소프트웨어공학) | 학점: 4.03 / 4.5 | 서울</p>
+          <p>ICT공학 (소프트웨어공학) | 전공학점: 4.03 / 4.5 | 서울</p>
         </div>
         <div class="education-card">
           <span class="education-card__eyebrow">2018.03 ~ 2020.02 | 졸업</span>
           <strong>한국폴리텍대학 강서</strong>
-          <p>데이터분석학 | 학점: 3.72 / 4.5 | 서울</p>
+          <p>데이터분석학 | 전공학점: 3.72 / 4.5 | 서울</p>
         </div>
       </div>
     </div>
@@ -917,9 +917,9 @@
       <div class="project-tabs" id="projectTabs">
         <button class="project-tabs__btn project-tabs__btn--active" data-filter="all">전체<span class="project-tabs__count">13</span></button>
         <button class="project-tabs__btn" data-filter="ai">AI / Data<span class="project-tabs__count">3</span></button>
+        <button class="project-tabs__btn" data-filter="observability">Observability<span class="project-tabs__count">2</span></button>
         <button class="project-tabs__btn" data-filter="devops">DevOps / CI·CD<span class="project-tabs__count">4</span></button>
         <button class="project-tabs__btn" data-filter="infra">Cloud / Infra<span class="project-tabs__count">4</span></button>
-        <button class="project-tabs__btn" data-filter="observability">Observability<span class="project-tabs__count">2</span></button>
       </div>
 
       <div class="project-grid reveal-stagger" id="projectGrid">
@@ -968,6 +968,41 @@
             <span class="chip">Message Queue</span>
           </div>
           <span class="project-card__link">kafka-basics-lab <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
+        </a>
+        
+        <!-- ── Observability ── -->
+        <a class="project-card" data-category="observability" href="https://github.com/jangkops/Cost-Dashboard-Platform" target="_blank" rel="noopener">
+          <span class="project-card__type project-card__type--github">GitHub</span>
+          <strong>Cost Dashboard Platform</strong>
+          <p>과제별 정밀 재무적 비용 흐름을 시각화하고 운영을 위한 대시보드 플랫폼</p>
+          <div class="chip-cloud">
+            <span class="chip">GPU/CPU Cost</span>
+            <span class="chip">Docker Agent</span>
+            <span class="chip">AWS Cost Usage Report</span>
+            <span class="chip">AWS Cost Ahtena</span>
+            <span class="chip">AWS Glue</span>
+            <span class="chip">React</span>
+            <span class="chip">Python Flask</span>
+            <span class="chip">Dashboard</span>
+            <span class="chip">Platform</span>
+          </div>
+          <span class="project-card__link">Cost-Dashboard-Platform <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
+        </a>
+
+        <a class="project-card" data-category="observability" href="https://github.com/jangkops/GPU-Observability-System" target="_blank" rel="noopener">
+          <span class="project-card__type project-card__type--github">GitHub</span>
+          <strong>GPU Observability System</strong>
+          <p>GPU 실시간 상태와 자원 지표를 추적하기 위한 관측성 중심 시스템</p>
+          <div class="chip-cloud">
+            <span class="chip">GPU/CPU/MEM</span>
+            <span class="chip">Docker</span>
+            <span class="chip">DCGM Exporter(Custom)</span>
+            <span class="chip">FSx Exporter(Custom)</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">Prometheus</span>
+            <span class="chip">AWS Simple Email Service</span>
+          </div>
+          <span class="project-card__link">GPU-Observability-System <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
         </a>
         
         <!-- ── DevOps / CI·CD ── -->
@@ -1070,41 +1105,6 @@
             <span class="chip">학습 정리</span>
           </div>
           <span class="project-card__link">kubernetes-practice <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
-        </a>
-
-        <!-- ── Observability ── -->
-        <a class="project-card" data-category="observability" href="https://github.com/jangkops/Cost-Dashboard-Platform" target="_blank" rel="noopener">
-          <span class="project-card__type project-card__type--github">GitHub</span>
-          <strong>Cost Dashboard Platform</strong>
-          <p>과제별 정밀 재무적 비용 흐름을 시각화하고 운영을 위한 대시보드 플랫폼</p>
-          <div class="chip-cloud">
-            <span class="chip">GPU/CPU Cost</span>
-            <span class="chip">Docker Agent</span>
-            <span class="chip">AWS Cost Usage Report</span>
-            <span class="chip">AWS Cost Ahtena</span>
-            <span class="chip">AWS Glue</span>
-            <span class="chip">React</span>
-            <span class="chip">Python Flask</span>
-            <span class="chip">Dashboard</span>
-            <span class="chip">Platform</span>
-          </div>
-          <span class="project-card__link">Cost-Dashboard-Platform <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
-        </a>
-
-        <a class="project-card" data-category="observability" href="https://github.com/jangkops/GPU-Observability-System" target="_blank" rel="noopener">
-          <span class="project-card__type project-card__type--github">GitHub</span>
-          <strong>GPU Observability System</strong>
-          <p>GPU 실시간 상태와 자원 지표를 추적하기 위한 관측성 중심 시스템</p>
-          <div class="chip-cloud">
-            <span class="chip">GPU/CPU/MEM</span>
-            <span class="chip">Docker</span>
-            <span class="chip">DCGM Exporter(Custom)</span>
-            <span class="chip">FSx Exporter(Custom)</span>
-            <span class="chip">Grafana</span>
-            <span class="chip">Prometheus</span>
-            <span class="chip">AWS Simple Email Service</span>
-          </div>
-          <span class="project-card__link">GPU-Observability-System <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
         </a>
 
       </div>
