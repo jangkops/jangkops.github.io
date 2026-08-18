@@ -1031,3 +1031,45 @@ footer {
   .resume-header__contact { gap: 12px; }
   .cert-item { padding: 10px 12px; }
 }
+
+/* ═══════════════════════════════════════════ */
+/* 한글 타이포그래피 보정                       */
+/* ═══════════════════════════════════════════ */
+
+/* 한글은 어절(띄어쓰기) 단위로만 줄바꿈. 미설정 시 "효율과"가 "효율/과"로 잘림.
+   긴 URL·영문 토큰은 예외적으로 강제 줄바꿈 허용 */
+body {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 마지막 줄에 한두 글자만 남는 고아줄(orphan) 방지 */
+p,
+.timeline__desc,
+.project-card p,
+.competency-card p,
+.knowledge-card p,
+.pd-badge span:last-child,
+.project-detail-card__head p,
+.education-card p {
+  text-wrap: pretty;
+}
+
+/* 제목은 줄 길이를 고르게 분배 */
+h1, h2, h3,
+.project-detail-card__head strong,
+.project-card strong,
+.competency-card strong,
+.knowledge-card strong,
+.pd-badge strong {
+  text-wrap: balance;
+}
+
+/* 장문 산문의 1줄당 글자 수 축소 (측정값 81~91자 → 가독 범위로).
+   경력 사항은 카드 안에 들어가므로 우측 여백이 과해 보이지 않게 조금 더 넓게 */
+.career-summary__intro p {
+  max-width: 64ch;
+}
+.timeline__desc {
+  max-width: 74ch;
+}
