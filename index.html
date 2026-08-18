@@ -54,7 +54,7 @@
         <div class="career-summary__intro">
           <p class="career-summary__eyebrow">ABOUT ME</p>
           <h3>레거시/클라우드 아키텍트 및 플랫폼 엔지니어</h3>
-          <p>총 경력 4년이상의 레거시/클라우드 아키텍트 및 플랫폼 엔지니어로 시스템의 비효율을 분석하고 운영 프로세스의 시스템화를 통해 인프라 운영 효율과 거버넌스를 강화하는 문제 해결사입니다. 온프레미스의 안정성과 클라우드 네이티브의 속도를 모두 경험했으며 GPU 인스턴스 구축/운영, 0.3% 오차 미만의 GPU등 핵심 리소스의 복잡한 프로젝트별 일/월별 비용 정산 대시보드, Terraform 기반의 AWS Bedrock 생성형 AI 멀티모델 쿼터 게이트웨이 파이프라인 구축, 70여개 이상의 멀티모델 병렬 호출 AI 에이전트 에디터 개발, Ansible 기반의 계정 관리 자동화 통합 플랫폼을 구축하여 운영 공수를 절감하고 대규모 금융권 레거시 백업 시스템 성능을 32% 개선하는 등 실질적인 기술 성과를 보유하고 있습니다.</p>
+          <p>총 경력 4년이상의 레거시/클라우드 아키텍트 및 플랫폼 엔지니어로 시스템의 비효율을 분석하고 운영 프로세스의 시스템화를 통해 인프라 운영 효율과 거버넌스를 강화하는 문제 해결사입니다. 온프레미스의 안정성과 클라우드 네이티브의 속도를 모두 경험했으며 GPU 인스턴스 구축/운영, 0.3% 오차 미만의 GPU등 핵심 리소스의 복잡한 프로젝트별 일/월별 비용 정산 대시보드, Terraform 기반의 AWS Bedrock 생성형 AI 멀티모델 쿼터 게이트웨이 파이프라인 구축(배치 추론 경로로 단가 50% 절감), 90여 개 모델을 병렬 호출·합의하는 AI 에이전틱 에디터 개발, Ansible 기반의 계정 관리 자동화 통합 플랫폼을 구축하여 운영 공수를 절감했습니다. GPU·스토리지 통합 관측 체계와 커널 수준 리소스 보호 정책으로 연구 인프라의 가용성을 확보했고, 대규모 금융권 레거시 백업 시스템 성능을 32% 개선하는 등 실질적인 기술 성과를 보유하고 있습니다.</p>
         </div>
         <div class="career-stats reveal-stagger">
           <article class="career-stat">
@@ -70,9 +70,12 @@
             <span>릴리즈 속도 단축</span>
           </article>
           <article class="career-stat">
-            <strong>AI</strong>
-            <span>Multi Model Editor 개발</span>
-            <span>Bedrock LLM Pipeline 구축</span>
+            <strong>90+</strong>
+            <span>병렬 호출 멀티모델 에디터</span>
+          </article>
+          <article class="career-stat">
+            <strong>50%</strong>
+            <span>배치 추론 단가 절감</span>
           </article>
         </div>
       </div>
@@ -105,7 +108,7 @@
             <span class="chip">AWS EC2</span>
             <span class="chip">GPU Instance</span>
             <span class="chip">Bedrock</span>
-            <span class="chip">Strands Framework</span>
+            <span class="chip">Bedrock Gateway</span>
           </div>
         </div>
         <div class="competency-card">
@@ -174,6 +177,8 @@
               <span class="chip">Ansible</span>
               <span class="chip">Docker</span>
               <span class="chip">Bedrock</span>
+              <span class="chip">Terraform</span>
+              <span class="chip">Prometheus</span>
             </div>
           </div>
         </div>
@@ -241,7 +246,7 @@
           <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 현재</span>
             <strong>통합 계정관리 자동화 포털 개발</strong>
-            <p>파편화된 권한 관리 체계로 인한 운영 병목을 해결하고 보안성을 확보하기 위한 관리 플랫폼 구축</p>
+            <p>파편화된 권한 관리 체계로 인한 운영 병목을 해결하고, AWS 계정·GitHub 조직·연구 인프라 운영을 하나의 포털로 통합한 관리 플랫폼</p>
           </div>
           <div class="project-detail-badges">
             <div class="pd-badge">
@@ -251,13 +256,18 @@
             </div>
             <div class="pd-badge">
               <span class="pd-badge__mark">성과</span>
-              <strong>실시간 감사 추적 확보</strong>
-              <span>AWS SSM Session Manager와 CloudWatch를 연동하여 사용자별 접속 이력 및 실시간 커맨드 로그 수집 체계 구축 (보안 추적성 강화)</span>
+              <strong>감사 추적 체계 확보</strong>
+              <span>AWS SSM 기반 원격 실행 자동화와 Bastion 접속 이력 매핑을 결합하여 사용자별 접속 이력·감사 로그를 조회하는 API/화면 구축 (보안 추적성 강화)</span>
             </div>
             <div class="pd-badge">
               <span class="pd-badge__mark">성과</span>
-              <strong>운영 리소스 최적화</strong>
-              <span>반복적인 계정 관리 업무를 자동화로 대체하여 운영 공수 절감 및 사용자 로그 모니터링, 핵심 인프라 설계 집중 시간 확보</span>
+              <strong>GitHub 조직 거버넌스 통합</strong>
+              <span>Team·권한·감사 로그를 포털에서 직접 관리하도록 GitHub API를 연동하여, 코드 저장소 접근 권한까지 계정 수명주기와 동일한 승인 흐름으로 편입</span>
+            </div>
+            <div class="pd-badge">
+              <span class="pd-badge__mark">성과</span>
+              <strong>운영 단일 진입점 구축</strong>
+              <span>프로젝트 그룹·인스턴스 관리에 더해 Bedrock 게이트웨이 승인과 비용 모니터링 화면까지 포털로 흡수하여, 반복 운영 업무를 자동화하고 핵심 인프라 설계 집중 시간 확보</span>
             </div>
           </div>
           <div class="chip-cloud" style="padding: 0 22px 22px;">
@@ -265,8 +275,12 @@
             <span class="chip">Python Flask</span>
             <span class="chip">Ansible</span>
             <span class="chip">AWS SSM</span>
+            <span class="chip">IAM Identity Center</span>
+            <span class="chip">Cognito</span>
+            <span class="chip">GitHub API</span>
             <span class="chip">SES</span>
-            <span class="chip">CloudWatch Logs</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Nginx</span>
             <span class="chip">Docker</span>
           </div>
         </article>
@@ -306,28 +320,34 @@
           <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 현재</span>
             <strong>제약 AI 에이전틱 연구 환경 지원을 위한 멀티모델 쿼터 파이프라인 구축</strong>
-            <p>AWS Bedrock과 Strands Framework를 활용하여 자연어 기반의 지능형 멀티 에이전트 쿼터 파이프라인 아키텍처 설계 및 구축</p>
+            <p>연구원이 기존 SSO·CLI 환경을 그대로 쓰면서도 조직 차원의 비용 통제가 성립하도록, Bedrock 호출 전 구간에 정책·한도·정산을 집행하는 게이트웨이를 Terraform으로 설계·구축</p>
           </div>
           <div class="project-detail-badges">
             <div class="pd-badge">
               <span class="pd-badge__mark">성과</span>
-              <strong>AWS Bedrock 에이전트 빌더 환경 구축</strong>
-              <span>Bedrock 기반 에이전트 빌더 환경을 구축하여 AI 모델 활용 기반 마련</span>
+              <strong>Self-Service 쿼터 모델 설계</strong>
+              <span>전면 승인제가 아닌 Self-Service + 예외 승인 구조를 채택. 사용자별 월간 KRW 한도 이내에서는 승인 없이 즉시 호출하고 초과분만 승인 대상으로 분리하여, 통제와 연구 속도를 동시에 확보</span>
             </div>
             <div class="pd-badge">
               <span class="pd-badge__mark">성과</span>
-              <strong>Strands AI 프레임워크 환경 기반 마련</strong>
-              <span>Strands Framework 기반의 멀티 에이전트 운영 환경 구축</span>
+              <strong>장시간·대용량 추론 분리 처리</strong>
+              <span>API Gateway 타임아웃을 넘는 요청은 Step Functions + ECS Fargate 워커로 우회하고, 세마포어 테이블로 동시 실행을 제한. 제출 시 상한 비용을 선점 기록하고 완료 시 실제 비용으로 정산해 한도 초과를 사전 차단</span>
             </div>
             <div class="pd-badge">
               <span class="pd-badge__mark">성과</span>
-              <strong>실시간 쿼터 통제 파이프라인</strong>
-              <span>실시간 쿼터 통제 승인 밴드 파이프라인 및 알림 체계 구현</span>
+              <strong>배치 추론 도입으로 단가 50% 절감</strong>
+              <span>대량 오프라인 작업을 Bedrock 배치 추론 경로로 분리하여 온디맨드 대비 50% 할인 단가 적용. 입력 토큰을 JSONL에서 정확히 계산할 수 있어 실시간 경로보다 강한 한도 보장 성립</span>
+            </div>
+            <div class="pd-badge">
+              <span class="pd-badge__mark">성과</span>
+              <strong>전 구간 IaC 및 운영 가시성</strong>
+              <span>게이트웨이 리소스 전체를 Terraform으로 관리하고, DynamoDB 사용량 ledger·CloudWatch 로그·SES 알림으로 실시간 사용량 추적과 운영 감사 로그를 확보</span>
             </div>
           </div>
           <div class="chip-cloud" style="padding: 0 22px 22px;">
             <span class="chip">AWS Bedrock</span>
-            <span class="chip">AWS StepFunction</span>
+            <span class="chip">Terraform</span>
+            <span class="chip">AWS StepFunctions</span>
             <span class="chip">AWS Fargate</span>
             <span class="chip">AWS SES</span>
             <span class="chip">AWS DynamoDB</span>
@@ -581,7 +601,9 @@
         <div class="stack-category__header"><i class="fa-solid fa-wand-magic-sparkles"></i> AI &amp; Others</div>
         <div class="stack-tag-list">
           <div class="stack-tag">OpenAI <span>LLM Pipeline</span></div>
-          <div class="stack-tag">AWS Bedrock <span>AI Integration</span></div>
+          <div class="stack-tag">AWS Bedrock <span>Gateway · Quota 통제</span></div>
+          <div class="stack-tag">LangGraph <span>Multi-Agent Orchestration</span></div>
+          <div class="stack-tag">RAG <span>fastembed · BM25 Hybrid</span></div>
           <div class="stack-tag">Eformsign <span>Document Workflow</span></div>
           <div class="stack-tag">Middleware / Server</div>
         </div>
@@ -914,11 +936,11 @@
 
       <!-- Tab Filter -->
       <div class="project-tabs" id="projectTabs">
-        <button class="project-tabs__btn project-tabs__btn--active" data-filter="all">전체<span class="project-tabs__count">14</span></button>
-        <button class="project-tabs__btn" data-filter="ai">AI / Data<span class="project-tabs__count">3</span></button>
-        <button class="project-tabs__btn" data-filter="observability">Observability<span class="project-tabs__count">2</span></button>
-        <button class="project-tabs__btn" data-filter="devops">DevOps / CI·CD<span class="project-tabs__count">4</span></button>
-        <button class="project-tabs__btn" data-filter="infra">Cloud / Infra<span class="project-tabs__count">5</span></button>
+        <button class="project-tabs__btn project-tabs__btn--active" data-filter="all">전체<span class="project-tabs__count"></span></button>
+        <button class="project-tabs__btn" data-filter="ai">AI / Data<span class="project-tabs__count"></span></button>
+        <button class="project-tabs__btn" data-filter="observability">Observability · FinOps<span class="project-tabs__count"></span></button>
+        <button class="project-tabs__btn" data-filter="devops">DevOps / CI·CD<span class="project-tabs__count"></span></button>
+        <button class="project-tabs__btn" data-filter="infra">Cloud / Infra<span class="project-tabs__count"></span></button>
       </div>
 
       <div class="project-grid reveal-stagger" id="projectGrid">
@@ -927,15 +949,17 @@
         <a class="project-card" data-category="ai" href="https://github.com/jangkops/Agentic-Editor" target="_blank" rel="noopener">
           <span class="project-card__type project-card__type--github">GitHub</span>
           <strong>AI Multimodal Agentic Editor</strong>
-          <p>70여개 이상의 AI 멀티모델 병렬 호출 에이전틱 에디터</p>
+          <p>90여 개 모델을 병렬 호출하고 합의를 도출하는 데스크톱 에이전틱 코드 에디터. 멀티에이전트 오케스트레이션·프로젝트 인식 RAG·원격 SSH 세션까지 하나의 워크스페이스로 통합</p>
           <div class="chip-cloud">
             <span class="chip">AWS Bedrock</span>
-            <span class="chip">LLM</span>
+            <span class="chip">LLM 합의 엔진</span>
             <span class="chip">LangGraph</span>
-            <span class="chip">VecterDB</span>
+            <span class="chip">Hybrid RAG</span>
+            <span class="chip">fastembed</span>
+            <span class="chip">BM25</span>
             <span class="chip">FastAPI</span>
-            <span class="chip">RAG</span>
             <span class="chip">Electron</span>
+            <span class="chip">AWS SSO</span>
           </div>
           <span class="project-card__link">AI Multimodal Agentic Editor <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
         </a>
@@ -943,7 +967,7 @@
         <a class="project-card" data-category="ai" href="https://github.com/jangkops/Bedrock-AI-LLM-Pipeline" target="_blank" rel="noopener">
           <span class="project-card__type project-card__type--github">GitHub</span>
           <strong>Bedrock AI LLM Pipeline</strong>
-          <p>Bedrock 기반 AI LLM 파이프라인 게이트웨이</p>
+          <p>월간 KRW 한도·승인 워크플로·실시간 사용량 추적을 집행하는 Bedrock 게이트웨이. 장시간 추론 분리 처리와 배치 추론(단가 50% 절감) 경로 포함</p>
           <div class="chip-cloud">
             <span class="chip">Terraform</span>
             <span class="chip">AWS Bedrock</span>
@@ -976,12 +1000,12 @@
         <a class="project-card" data-category="observability" href="https://github.com/jangkops/Cost-Dashboard-Platform" target="_blank" rel="noopener">
           <span class="project-card__type project-card__type--github">GitHub</span>
           <strong>Cost Dashboard Platform</strong>
-          <p>과제별 정밀 재무적 비용 흐름을 시각화하고 운영을 위한 대시보드 플랫폼</p>
+          <p>GPU 인스턴스 6대의 메트릭을 60초 주기로 수집해 CUR·S3 Inventory와 결합하고, 과제별 일/월 비용을 오차율 0.3% 미만으로 정산하는 FinOps 대시보드</p>
           <div class="chip-cloud">
             <span class="chip">GPU/CPU Cost</span>
             <span class="chip">Docker Agent</span>
             <span class="chip">AWS Cost Usage Report</span>
-            <span class="chip">AWS Cost Ahtena</span>
+            <span class="chip">AWS Athena</span>
             <span class="chip">AWS Glue</span>
             <span class="chip">React</span>
             <span class="chip">Python Flask</span>
@@ -995,15 +1019,20 @@
         <a class="project-card" data-category="observability" href="https://github.com/jangkops/GPU-Observability-System" target="_blank" rel="noopener">
           <span class="project-card__type project-card__type--github">GitHub</span>
           <strong>GPU Observability System</strong>
-          <p>GPU 실시간 상태와 자원 지표를 추적하기 위한 관측성 중심 시스템</p>
+          <p>클라우드 GPU 인스턴스와 온프레미스 DGX를 함께 관측하는 통합 모니터링 체계. GPU·프로세스 메트릭에 더해 S3 사용량·비용까지 수집하고 임계치 알림을 자동 발송</p>
           <div class="chip-cloud">
             <span class="chip">GPU/CPU/MEM</span>
-            <span class="chip">Docker</span>
             <span class="chip">DCGM Exporter(Custom)</span>
             <span class="chip">FSx Exporter(Custom)</span>
-            <span class="chip">Grafana</span>
+            <span class="chip">S3 Cost Monitor</span>
+            <span class="chip">On-prem DGX</span>
             <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">Alertmanager</span>
+            <span class="chip">AWS Athena</span>
+            <span class="chip">DynamoDB</span>
             <span class="chip">AWS Simple Email Service</span>
+            <span class="chip">Docker</span>
           </div>
           <span class="project-card__link">GPU-Observability-System <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
         </a>
@@ -1079,12 +1108,15 @@
         <a class="project-card" data-category="infra" href="https://github.com/jangkops/Server-Resource-Quota" target="_blank" rel="noopener">
           <span class="project-card__type project-card__type--github">GitHub</span>
           <strong>Server Resource Quota</strong>
-          <p>GPU 연구/학습 서버의 Memory 보호 정책 및 CPU soft lockup 사전 대응 리소스 쿼터</p>
+          <p>사용자 1명의 메모리 폭주가 서버 전체 장애로 번지지 않도록 cgroup 상한을 걸고, SSH·핵심 서비스 생존을 보장하는 커널 수준 보호 정책. 선제 kill을 수행하는 OOM Guard 데몬(v3.1) 포함</p>
           <div class="chip-cloud">
             <span class="chip">Cgroup</span>
-            <span class="chip">user.slice </span>
-            <span class="chip">system.slice </span>
+            <span class="chip">user.slice</span>
+            <span class="chip">system.slice</span>
             <span class="chip">Hard limit</span>
+            <span class="chip">OOM Guard Daemon</span>
+            <span class="chip">Python</span>
+            <span class="chip">systemd</span>
           </div>
           <span class="project-card__link">Server-Resource-Quota <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.65rem"></i></span>
         </a>
