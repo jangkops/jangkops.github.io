@@ -552,7 +552,8 @@ footer {
 }
 .career-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* 지표 5개가 한 줄에 들어가도록 고정. auto-fill 이면 4+1 로 갈라짐 */
+  grid-template-columns: repeat(5, 1fr);
   gap: 12px;
 }
 .career-stat {
@@ -1007,6 +1008,11 @@ footer {
 }
 
 /* ── Mobile Performance ── */
+@media (max-width: 900px) {
+  /* 5칸이 좁아지는 구간 — 3 + 2 로 분배 */
+  .career-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 768px) {
   #ambientCanvas { display: none; }
   .resume-header__photo { animation: none; }
@@ -1028,6 +1034,8 @@ footer {
   .competency-grid { grid-template-columns: 1fr; }
   .education-grid { grid-template-columns: 1fr; }
   .career-stats { grid-template-columns: repeat(2, 1fr); }
+  /* 홀수라 혼자 남는 마지막 카드는 두 칸을 차지시켜 빈칸 방지 */
+  .career-stat:last-child:nth-child(odd) { grid-column: span 2; }
   .resume-header__contact { gap: 12px; }
   .cert-item { padding: 10px 12px; }
 }
