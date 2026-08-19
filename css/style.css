@@ -1082,3 +1082,13 @@ h1, h2, h3,
   font-size: 1.05rem;
   letter-spacing: -0.02em;
 }
+
+/* knowledge-grid 가 2열이 되는 구간(3열 진입 전).
+   How I Work(5장)·대회 참가(3장)처럼 홀수인 그리드는 마지막 카드가
+   혼자 남아 옆이 비므로 두 칸을 차지시킨다.
+   Knowledge Map(12장)은 짝수라 이 규칙에 걸리지 않는다. */
+@media (min-width: 641px) and (max-width: 821px) {
+  .knowledge-grid > .knowledge-card:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+}
