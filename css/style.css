@@ -552,8 +552,8 @@ footer {
 }
 .career-stats {
   display: grid;
-  /* 지표 5개가 한 줄에 들어가도록 고정. auto-fill 이면 4+1 로 갈라짐 */
-  grid-template-columns: repeat(5, 1fr);
+  /* 지표 6개를 3+3 으로 고정. auto-fill 이면 폭에 따라 고아 카드가 생김 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 .career-stat {
@@ -1008,11 +1008,6 @@ footer {
 }
 
 /* ── Mobile Performance ── */
-@media (max-width: 900px) {
-  /* 5칸이 좁아지는 구간 — 3 + 2 로 분배 */
-  .career-stats { grid-template-columns: repeat(3, 1fr); }
-}
-
 @media (max-width: 768px) {
   #ambientCanvas { display: none; }
   .resume-header__photo { animation: none; }
