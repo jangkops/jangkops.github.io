@@ -382,6 +382,23 @@
               <span>연구원은 기존 워크플로를 그대로 유지한 채 한도 안에서 즉시 모델을 사용하고, 조직은 실시간 사용량과 감사 로그를 확보했습니다. 배치 추론 경로는 온디맨드 대비 <b>50% 할인 단가</b>가 적용되며, 입력 토큰을 사전 계산할 수 있어 실시간 경로보다 강한 한도 보장이 성립합니다.</span>
             </div>
           </div>
+          <div class="arch-figs">
+            <span class="arch-figs__label">아키텍처 자료 — 클릭하면 원본이 열립니다</span>
+            <div class="arch-figs__row">
+              <a class="arch-fig" href="assets/arch/bedrock-definition.png" target="_blank" rel="noopener">
+                <img src="assets/arch/bedrock-definition.png" alt="Bedrock 게이트웨이 아키텍처 정의 — Self-Service 쿼터 모델과 예외 승인 흐름" loading="lazy" decoding="async">
+                <span>아키텍처 정의</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/bedrock-full-flow.png" target="_blank" rel="noopener">
+                <img src="assets/arch/bedrock-full-flow.png" alt="Bedrock 게이트웨이 전체 플로우 — SSO 인증부터 Bedrock 호출·로깅까지 8단계" loading="lazy" decoding="async">
+                <span>전체 Flow</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/bedrock-sequence.png" target="_blank" rel="noopener">
+                <img src="assets/arch/bedrock-sequence.png" alt="Bedrock 게이트웨이 호출 순서 — 정책·한도 검증과 응답 반환 시퀀스" loading="lazy" decoding="async">
+                <span>호출 순서</span>
+              </a>
+            </div>
+          </div>
           <div class="chip-cloud" style="padding: 0 22px 22px;">
             <span class="chip">AWS Bedrock</span>
             <span class="chip">Terraform</span>

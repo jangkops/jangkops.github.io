@@ -1087,3 +1087,54 @@ h1, h2, h3,
     grid-column: span 2;
   }
 }
+
+/* ═══════════════════════════════════════════ */
+/* 프로젝트 아키텍처 도면 (클릭 시 원본 열림)   */
+/* ═══════════════════════════════════════════ */
+.arch-figs {
+  padding: 0 22px 18px;
+}
+.arch-figs__label {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.arch-figs__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.arch-fig {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-alt);
+  text-decoration: none;
+  transition: border-color .2s, transform .2s;
+}
+.arch-fig:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.arch-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top left;
+}
+.arch-fig > span {
+  display: block;
+  padding: 7px 10px;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-light);
+  background: var(--surface);
+}
+@media (max-width: 640px) {
+  .arch-figs__row { grid-template-columns: 1fr; }
+  .arch-fig img { aspect-ratio: auto; object-fit: contain; }
+}
