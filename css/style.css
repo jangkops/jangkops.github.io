@@ -973,6 +973,8 @@ footer {
 /* ── Print ── */
 @media print {
   #ambientCanvas { display: none; }
+  /* 플로팅 내비는 화면 전용 — 인쇄물/PDF 에 찍히지 않게 */
+  .float-nav { display: none; }
   body { background: #fff; }
   .section--alt { background: #fff; }
   .container { max-width: 100%; padding: 0 16px; }
