@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+  <title id="t">Multi-Cloud EKS·AKS 인프라 아키텍처 — Route 53, ALB·WAF, EKS, Rook-Ceph, Terraform 모듈 구조</title>
+  <desc id="d">사용자 요청이 Route 53을 거쳐 퍼블릭 서브넷의 Application Load Balancer에 도달하고, WAF 검사를 통과해 프라이빗 서브넷의 EKS 워커 노드로 들어간다. Ingress가 애플리케이션 Pod로 보내고, Pod는 Rook-Ceph 영구 스토리지를 쓴다. Terraform은 AWS·Azure 모듈을 환경별로 조립한다.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'SUIT', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif; fill: #1a1a2e; }
+    .h1 { font-size: 26px; font-weight: 800; }
+    .sub { font-size: 16px; fill: #718096; }
+    .layer { font-size: 20px; font-weight: 800; }
+    .zone { font-size: 16px; font-weight: 700; fill: #4a5568; }
+    .node { font-size: 18px; font-weight: 700; }
+    .nsub { font-size: 14.5px; fill: #4a5568; }
+    .bt { font-size: 18px; font-weight: 700; }
+    .bl { font-size: 15.5px; fill: #4a5568; }
+    .edge { font-size: 15px; font-weight: 600; fill: #4a5568; }
+    .note { font-size: 14px; fill: #718096; }
+  </style>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#ffffff"/>
+  <text x="48" y="54" class="h1">Multi-Cloud EKS·AKS 인프라 (IaC) — 아키텍처</text>
+  <text x="1552" y="54" class="sub" text-anchor="end">k8s-infra-as-code · AWS 예시 · 2024.12 ~ 2025.07</text>
+
+  <!-- 인터넷 -->
+  <rect x="40" y="84" width="210" height="476" rx="14" fill="#f8f9fa" stroke="#e5e7eb"/>
+  <text x="62" y="114" class="layer" style="fill:#4a5568">인터넷</text>
+  <rect x="66" y="270" width="158" height="70" rx="35" fill="#ffffff" stroke="#9ca3af"/>
+  <text x="145" y="312" class="node" text-anchor="middle">사용자</text>
+
+  <!-- AWS Cloud -->
+  <rect x="276" y="84" width="1284" height="476" rx="14" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="300" y="114" class="layer" style="fill:#b45309">AWS Cloud</text>
+  <rect x="300" y="270" width="200" height="70" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="400" y="303" class="node" text-anchor="middle">Route 53</text>
+  <text x="400" y="326" class="nsub" text-anchor="middle">DNS</text>
+
+  <!-- VPC -->
+  <rect x="540" y="128" width="1000" height="414" rx="12" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="562" y="156" class="layer" style="fill:#1d4ed8">VPC</text>
+  <!-- Public Subnets -->
+  <rect x="562" y="176" width="236" height="346" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-dasharray="6 5"/>
+  <text x="580" y="202" class="zone">Public Subnets</text>
+  <rect x="580" y="262" width="200" height="86" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text x="680" y="298" class="node" text-anchor="middle">Application</text>
+  <text x="680" y="322" class="node" text-anchor="middle">Load Balancer</text>
+  <!-- Private Subnets -->
+  <rect x="824" y="176" width="696" height="346" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-dasharray="6 5"/>
+  <text x="842" y="202" class="zone">Private Subnets</text>
+  <rect x="846" y="262" width="236" height="86" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text x="964" y="298" class="node" text-anchor="middle">EKS 클러스터</text>
+  <text x="964" y="322" class="nsub" text-anchor="middle">Worker Nodes</text>
+  <rect x="1218" y="262" width="280" height="86" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text x="1358" y="310" class="node" text-anchor="middle">애플리케이션 Pods</text>
+  <rect x="1218" y="408" width="280" height="86" rx="10" fill="#ffffff" stroke="#3b82f6" stroke-width="1.6"/>
+  <text x="1358" y="444" class="node" text-anchor="middle">Rook-Ceph</text>
+  <text x="1358" y="468" class="nsub" text-anchor="middle">Persistent Storage</text>
+
+  <!-- 흐름 -->
+  <line x1="224" y1="305" x2="298" y2="305" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <line x1="500" y1="305" x2="578" y2="305" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <line x1="780" y1="305" x2="844" y2="305" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <rect x="770" y="236" width="86" height="22" rx="4" fill="#ffffff" stroke="#fca5a5"/>
+  <text x="813" y="252" class="edge" text-anchor="middle" style="fill:#dc2626">WAF 검사</text>
+  <line x1="1082" y1="305" x2="1216" y2="305" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <text x="1149" y="292" class="edge" text-anchor="middle">Ingress</text>
+  <line x1="1358" y1="350" x2="1358" y2="406" stroke="#4a5568" stroke-width="2.5" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text x="846" y="440" class="note">Azure 환경은 VNet · AKS로</text>
+  <text x="846" y="460" class="note">같은 구조를 구성</text>
+
+  <!-- Terraform 구조 -->
+  <rect x="40" y="590" width="1520" height="270" rx="14" fill="#d1fae5" stroke="#6ee7b7"/>
+  <text x="64" y="620" class="layer" style="fill:#047857">Terraform 구조 — 모듈은 부품, 환경은 조립</text>
+  <rect x="64" y="638" width="356" height="200" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="84" y="668" class="bt">modules/aws</text>
+  <text x="84" y="698" class="bl">vpc · iam · eks</text>
+  <text x="84" y="724" class="bl">alb · s3 · security</text>
+  <text x="84" y="750" class="bl">재사용 가능한 AWS 인프라 단위</text>
+  <rect x="436" y="638" width="356" height="200" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="456" y="668" class="bt">modules/azure</text>
+  <text x="456" y="698" class="bl">vnet · aks</text>
+  <text x="456" y="724" class="bl">재사용 가능한 Azure 인프라 단위</text>
+  <rect x="808" y="638" width="356" height="200" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="828" y="668" class="bt">environments</text>
+  <text x="828" y="698" class="bl">dev · stg · prod · sre-production</text>
+  <text x="828" y="724" class="bl">환경마다 모듈을 호출해 조립</text>
+  <text x="828" y="750" class="bl">plan → apply 를 환경 디렉터리에서</text>
+  <rect x="1180" y="638" width="356" height="200" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="1200" y="668" class="bt">kubernetes-addons</text>
+  <text x="1200" y="698" class="bl">rook-ceph — 영구 볼륨</text>
+  <text x="1200" y="724" class="bl">istio — Gateway · VirtualService</text>
+  <text x="1200" y="750" class="bl">· DestinationRule</text>
+</svg>
