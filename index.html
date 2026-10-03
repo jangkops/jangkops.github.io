@@ -303,7 +303,7 @@
             <div class="pd-badge pd-badge--star-s">
               <span class="pd-badge__mark">S</span>
               <strong>상황 (Situation)</strong>
-              <span>Bedrock 게이트웨이로 LLM 호출의 비용·감사 통제는 세웠지만, 연구·개발 현장에서 여러 모델의 답을 나란히 비교하거나 답변이 실제 프로젝트 코드와 맞는지 확인할 도구가 없었습니다. 모델마다 SDK를 따로 붙이면 게이트웨이의 한도·감사 경로를 우회하게 되고, 근거 확인은 매번 사람의 몫으로 남았습니다.</span>
+              <span>Bedrock 게이트웨이가 LLM 호출의 비용·감사를 통제하는 것과 별개로, 연구·개발 현장에는 여러 모델의 답을 나란히 비교하거나 답변이 실제 프로젝트 코드와 맞는지 확인할 도구가 없었습니다. 모델마다 SDK를 따로 붙이면 게이트웨이의 한도·감사 경로를 우회하게 되고, 근거 확인은 매번 사람의 몫으로 남았습니다.</span>
             </div>
             <div class="pd-badge pd-badge--star-t">
               <span class="pd-badge__mark">T</span>
@@ -360,7 +360,7 @@
         </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
           <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.03 ~ 2026.07</span>
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.04 ~ 2026.08</span>
             <strong>제약 AI 연구 환경을 위한 Bedrock 멀티모델 쿼터 게이트웨이 구축</strong>
             <p>연구 속도를 죽이지 않으면서 조직 차원의 LLM 비용 통제를 성립시키는 게이트웨이를 Terraform으로 설계·구축</p>
           </div>
@@ -424,47 +424,6 @@
         </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
           <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 현재</span>
-            <strong>신약 연구용 GPU 인프라 도입 및 운영 체계 구축</strong>
-            <p>온프레미스 클러스터와 AWS Capacity Block을 병행하는 하이브리드 GPU 환경을 설계하고, 차세대 Blackwell 도입까지 주도</p>
-          </div>
-          <div class="project-detail-badges">
-            <div class="pd-badge pd-badge--star-s">
-              <span class="pd-badge__mark">S</span>
-              <strong>상황 (Situation)</strong>
-              <span>신약 연구 조직의 AI 학습 수요가 빠르게 늘었지만, 온프레미스만으로는 증설 속도가 따라가지 못하고 클라우드 GPU만으로는 장기 학습 비용을 감당하기 어려웠습니다. 고성능 GPU는 성능이 아니라 <b>수급 가능성 자체가 제약 조건</b>인 자원이었습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-t">
-              <span class="pd-badge__mark">T</span>
-              <strong>과제 (Task)</strong>
-              <span>워크로드 성격에 따라 자원을 나눠 배치해 확보 가능성과 비용을 동시에 만족시키고, 도입 이후의 운영까지 책임질 수 있는 체계를 만드는 것이 목표였습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-a">
-              <span class="pd-badge__mark">A</span>
-              <strong>행동 (Action)</strong>
-              <span>A100·H100 기반 온프레미스 클러스터를 상시 학습용으로, AWS Capacity Block(p4d·p4de·p5)을 탄력 수요용으로 배치하는 하이브리드 구성을 설계하고 수급 계약과 도입 협상을 직접 수행했습니다. 최근에는 B300을 고밀도 랙과 함께 도입하는 건을 추진했습니다. 온프레미스 DGX A100은 드라이버 업그레이드 작업계획을 수립해 연구 일정과 충돌하지 않게 무중단 창구를 잡아 진행했습니다. 도입에서 멈추지 않고 운영 3축을 직접 구현했습니다 — DCGM 커스텀 익스포터 기반 GPU·프로세스 관측, 과제별 비용 정산 대시보드, cgroup 리소스 쿼터와 OOM Guard 데몬을 통한 노드 보호입니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-r">
-              <span class="pd-badge__mark">R</span>
-              <strong>결과 (Result)</strong>
-              <span>GPU 자원의 가용성·비용·안정성을 각각 독립된 시스템으로 관리할 수 있게 되었습니다. 세 시스템 모두 사내 운영 중이며 저장소로 공개돼 있습니다. 도입 협상부터 커널 수준 보호 정책까지 한 사람이 연결해 책임지는 구조를 만들었습니다.</span>
-            </div>
-          </div>
-          <div class="chip-cloud" style="padding: 0 22px 22px;">
-            <span class="chip">NVIDIA H100</span>
-            <span class="chip">A100</span>
-            <span class="chip">NVIDIA B300</span>
-            <span class="chip">고밀도 랙</span>
-            <span class="chip">On-prem DGX</span>
-            <span class="chip">AWS Capacity Block</span>
-            <span class="chip">p5 · p4d · p4de</span>
-            <span class="chip">DCGM</span>
-            <span class="chip">Prometheus</span>
-            <span class="chip">cgroup</span>
-          </div>
-        </article>
-        <article class="project-detail-card project-detail-card--cloud reveal">
-          <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.04 ~ 2026.08</span>
             <strong>연구 데이터 스토리지 비용·성능 최적화 및 사용량 가시화</strong>
             <p>S3 Intelligent-Tiering 정립과 FSx for Lustre 마이그레이션으로 비용과 메타데이터 성능을 동시에 개선하고, prefix 단위까지 추적하는 대시보드 구축</p>
@@ -502,6 +461,87 @@
             <span class="chip">DynamoDB</span>
             <span class="chip">Prometheus</span>
             <span class="chip">Grafana</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.12 ~ 2026.03</span>
+            <strong>과제별 클라우드 비용 가시성 확보 플랫폼 개발</strong>
+            <p>GPU 등 고가 자원의 사용량을 과제 단위로 귀속시켜 일/월별로 정산하는 FinOps 대시보드</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>GPU 인스턴스는 시간당 단가가 높아 사용 주체를 특정하지 못하면 비용이 통제 불가능해집니다. 기존에는 계정 단위 청구서만 있어 <b>어느 연구 과제가 얼마를 썼는지</b> 귀속시킬 수 없었습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>인스턴스 단위가 아니라 과제 단위로, 일별·월별 비용을 신뢰할 수 있는 정확도로 산출하는 체계를 만드는 것이 목표였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>GPU·CPU 인스턴스에 60초 주기 수집 에이전트를 배포해 실사용 메트릭을 S3에 적재하고, AWS CUR 및 S3 Inventory와 결합했습니다. Glue Crawler로 카탈로그화한 뒤 Athena로 과제별 집계 쿼리를 구성하고, React 대시보드와 Flask 백엔드로 시각화했습니다. 환율은 한국은행 ECOS API를 연동해 원화 기준으로 정산했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>과제별 일·월 비용을 <b>오차율 0.3% 미만</b>으로 정산하는 대시보드를 확보해, 연구 과제 단위의 비용 책임 추적이 가능해졌습니다.</span>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">AWS CUR</span>
+            <span class="chip">AWS Glue</span>
+            <span class="chip">AWS Athena</span>
+            <span class="chip">AWS S3</span>
+            <span class="chip">S3 Inventory</span>
+            <span class="chip">Docker Agent</span>
+            <span class="chip">React</span>
+            <span class="chip">Python Flask</span>
+            <span class="chip">FinOps</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 현재</span>
+            <strong>신약 연구용 GPU 인프라 도입 및 운영 체계 구축</strong>
+            <p>온프레미스 클러스터와 AWS Capacity Block을 병행하는 하이브리드 GPU 환경을 설계하고, 차세대 Blackwell 도입까지 주도</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>신약 연구 조직의 AI 학습 수요가 빠르게 늘었지만, 온프레미스만으로는 증설 속도가 따라가지 못하고 클라우드 GPU만으로는 장기 학습 비용을 감당하기 어려웠습니다. 고성능 GPU는 성능이 아니라 <b>수급 가능성 자체가 제약 조건</b>인 자원이었습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>워크로드 성격에 따라 자원을 나눠 배치해 확보 가능성과 비용을 동시에 만족시키고, 도입 이후의 운영까지 책임질 수 있는 체계를 만드는 것이 목표였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>A100·H100 기반 온프레미스 클러스터를 상시 학습용으로, AWS Capacity Block(p4d·p4de·p5)을 탄력 수요용으로 배치하는 하이브리드 구성을 설계하고 수급 계약과 도입 협상을 직접 수행했습니다. 최근에는 B300을 고밀도 랙과 함께 도입하는 건을 추진했습니다. 온프레미스 DGX A100은 드라이버 업그레이드 작업계획을 수립해 연구 일정과 충돌하지 않게 무중단 창구를 잡아 진행했습니다. 도입에서 멈추지 않고 운영 3축을 직접 구현했습니다 — DCGM 커스텀 익스포터 기반 GPU·프로세스 관측, 과제별 비용 정산 대시보드, cgroup 리소스 쿼터와 OOM Guard 데몬을 통한 노드 보호입니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>GPU 자원의 가용성·비용·안정성을 각각 독립된 시스템으로 관리할 수 있게 되었습니다. 세 시스템 모두 사내 운영 중이며 저장소로 공개돼 있습니다. 도입 협상부터 커널 수준 보호 정책까지 한 사람이 연결해 책임지는 구조를 만들었습니다.</span>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">NVIDIA H100</span>
+            <span class="chip">A100</span>
+            <span class="chip">NVIDIA B300</span>
+            <span class="chip">고밀도 랙</span>
+            <span class="chip">On-prem DGX</span>
+            <span class="chip">AWS Capacity Block</span>
+            <span class="chip">p5 · p4d · p4de</span>
+            <span class="chip">DCGM</span>
+            <span class="chip">Prometheus</span>
+            <span class="chip">cgroup</span>
           </div>
         </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
@@ -551,46 +591,6 @@
             <span class="chip">Docker</span>
           </div>
         </article>
-        <article class="project-detail-card project-detail-card--cloud reveal">
-          <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.12 ~ 2026.03</span>
-            <strong>과제별 클라우드 비용 가시성 확보 플랫폼 개발</strong>
-            <p>GPU 등 고가 자원의 사용량을 과제 단위로 귀속시켜 일/월별로 정산하는 FinOps 대시보드</p>
-          </div>
-          <div class="project-detail-badges">
-            <div class="pd-badge pd-badge--star-s">
-              <span class="pd-badge__mark">S</span>
-              <strong>상황 (Situation)</strong>
-              <span>GPU 인스턴스는 시간당 단가가 높아 사용 주체를 특정하지 못하면 비용이 통제 불가능해집니다. 기존에는 계정 단위 청구서만 있어 <b>어느 연구 과제가 얼마를 썼는지</b> 귀속시킬 수 없었습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-t">
-              <span class="pd-badge__mark">T</span>
-              <strong>과제 (Task)</strong>
-              <span>인스턴스 단위가 아니라 과제 단위로, 일별·월별 비용을 신뢰할 수 있는 정확도로 산출하는 체계를 만드는 것이 목표였습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-a">
-              <span class="pd-badge__mark">A</span>
-              <strong>행동 (Action)</strong>
-              <span>GPU·CPU 인스턴스에 60초 주기 수집 에이전트를 배포해 실사용 메트릭을 S3에 적재하고, AWS CUR 및 S3 Inventory와 결합했습니다. Glue Crawler로 카탈로그화한 뒤 Athena로 과제별 집계 쿼리를 구성하고, React 대시보드와 Flask 백엔드로 시각화했습니다. 환율은 한국은행 ECOS API를 연동해 원화 기준으로 정산했습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-r">
-              <span class="pd-badge__mark">R</span>
-              <strong>결과 (Result)</strong>
-              <span>과제별 일·월 비용을 <b>오차율 0.3% 미만</b>으로 정산하는 대시보드를 확보해, 연구 과제 단위의 비용 책임 추적이 가능해졌습니다.</span>
-            </div>
-          </div>
-          <div class="chip-cloud" style="padding: 0 22px 22px;">
-            <span class="chip">AWS CUR</span>
-            <span class="chip">AWS Glue</span>
-            <span class="chip">AWS Athena</span>
-            <span class="chip">AWS S3</span>
-            <span class="chip">S3 Inventory</span>
-            <span class="chip">Docker Agent</span>
-            <span class="chip">React</span>
-            <span class="chip">Python Flask</span>
-            <span class="chip">FinOps</span>
-          </div>
-        </article>
         <article class="project-detail-card project-detail-card--etc reveal">
           <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">역량 강화 | 2024.12 ~ 2025.07</span>
@@ -633,6 +633,40 @@
         </article>
         <article class="project-detail-card project-detail-card--dev reveal">
           <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">롯데손해보험 | 2024.09 ~ 2024.12</span>
+            <strong>금융감독원 감사 대비 이기종 서버 로그 자동화 시스템 구축</strong>
+            <p>폐쇄망 내 수백 대 이기종 서버의 접근 로그를 중앙 NAS로 자동 백업하고 감사 추적성을 보장하는 시스템 구축</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>금융감독원의 강화된 감사 규정 준수를 위해, 폐쇄망 내 수백 대에 달하는 이기종 서버(Windows, Linux, AIX)의 접근 로그를 장기 보관하고 필요 시 즉시 제출해야 하는 요구사항이 발생했습니다. 기존에는 수동으로 로그를 관리하여 인적 실수의 위험과 장기 보관 로그가 부재한 문제가 있었습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>모든 서버의 Access Log를 OS 및 버전에 상관없이 중앙 NAS 스토리지로 안정적으로 자동 백업하고, 감사 요구 시 추적성을 보장하는 시스템을 구축하는 것이 목표였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>각기 다른 OS와 버전의 특성을 분석하여, Windows는 PowerShell, Linux/AIX는 Bash Shell을 기반으로 한 맞춤형 자동화 스크립트를 직접 설계하고 구현했습니다. 프로젝트 단위로 수행하던 OS 보안 취약점 점검 및 조치 경험을 바탕으로, 로그 수집 과정에서의 보안 취약점을 최소화하는 방식으로 스크립트를 설계했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>수백 대 서버의 로그 수집 및 백업 작업을 자동화했습니다. 금융감독원 감사 요구 시 필요한 로그를 즉시 제출할 수 있는 체계를 마련하여 규제 준수 리스크를 해소했습니다.</span>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">Windows (PowerShell)</span>
+            <span class="chip">Linux/AIX (Bash Shell)</span>
+            <span class="chip">NAS</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--dev reveal">
+          <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">롯데손해보험 | 2024.06 ~ 2025.01</span>
             <strong>레거시 백업 시스템 U2L 전환 및 성능 고도화</strong>
             <p>AIX 기반 노후 백업 시스템을 Linux로 전환하고 백업 프로세스를 근본적으로 개선</p>
@@ -665,40 +699,6 @@
             <span class="chip">Bash Shell Scripting</span>
             <span class="chip">Nutanix</span>
             <span class="chip">VMware</span>
-          </div>
-        </article>
-        <article class="project-detail-card project-detail-card--dev reveal">
-          <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">롯데손해보험 | 2024.09 ~ 2024.12</span>
-            <strong>금융감독원 감사 대비 이기종 서버 로그 자동화 시스템 구축</strong>
-            <p>폐쇄망 내 수백 대 이기종 서버의 접근 로그를 중앙 NAS로 자동 백업하고 감사 추적성을 보장하는 시스템 구축</p>
-          </div>
-          <div class="project-detail-badges">
-            <div class="pd-badge pd-badge--star-s">
-              <span class="pd-badge__mark">S</span>
-              <strong>상황 (Situation)</strong>
-              <span>금융감독원의 강화된 감사 규정 준수를 위해, 폐쇄망 내 수백 대에 달하는 이기종 서버(Windows, Linux, AIX)의 접근 로그를 장기 보관하고 필요 시 즉시 제출해야 하는 요구사항이 발생했습니다. 기존에는 수동으로 로그를 관리하여 인적 실수의 위험과 장기 보관 로그가 부재한 문제가 있었습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-t">
-              <span class="pd-badge__mark">T</span>
-              <strong>과제 (Task)</strong>
-              <span>모든 서버의 Access Log를 OS 및 버전에 상관없이 중앙 NAS 스토리지로 안정적으로 자동 백업하고, 감사 요구 시 추적성을 보장하는 시스템을 구축하는 것이 목표였습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-a">
-              <span class="pd-badge__mark">A</span>
-              <strong>행동 (Action)</strong>
-              <span>각기 다른 OS와 버전의 특성을 분석하여, Windows는 PowerShell, Linux/AIX는 Bash Shell을 기반으로 한 맞춤형 자동화 스크립트를 직접 설계하고 구현했습니다. 프로젝트 단위로 수행하던 OS 보안 취약점 점검 및 조치 경험을 바탕으로, 로그 수집 과정에서의 보안 취약점을 최소화하는 방식으로 스크립트를 설계했습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-r">
-              <span class="pd-badge__mark">R</span>
-              <strong>결과 (Result)</strong>
-              <span>수백 대 서버의 로그 수집 및 백업 작업을 자동화했습니다. 금융감독원 감사 요구 시 필요한 로그를 즉시 제출할 수 있는 체계를 마련하여 규제 준수 리스크를 해소했습니다.</span>
-            </div>
-          </div>
-          <div class="chip-cloud" style="padding: 0 22px 22px;">
-            <span class="chip">Windows (PowerShell)</span>
-            <span class="chip">Linux/AIX (Bash Shell)</span>
-            <span class="chip">NAS</span>
           </div>
         </article>
         <article class="project-detail-card project-detail-card--oa reveal">
