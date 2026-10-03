@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+  <title id="t">과제별 클라우드 비용 정산 아키텍처 — 수집 에이전트, CUR·S3 Inventory, Athena, 배분 엔진, 대시보드</title>
+  <desc id="d">GPU·CPU 인스턴스의 수집 에이전트가 60초마다 프로세스별 점유를 S3에 적재하고, AWS CUR과 S3 Inventory와 함께 Glue Crawler로 카탈로그화해 Athena로 집계한다. Flask 배분 엔진이 한국은행 환율을 적용해 과제·사용자·인스턴스별 비용을 계산하고 React 대시보드가 일·월 단위로 보여 준다.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'SUIT', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif; fill: #1a1a2e; }
+    .h1 { font-size: 26px; font-weight: 800; }
+    .sub { font-size: 16px; fill: #718096; }
+    .layer { font-size: 20px; font-weight: 800; }
+    .bt { font-size: 19px; font-weight: 700; }
+    .bl { font-size: 16px; fill: #4a5568; }
+    .mono { font-size: 15.5px; fill: #4a5568; font-family: 'SF Mono', 'Menlo', 'Consolas', 'Apple SD Gothic Neo', 'Malgun Gothic', monospace; }
+    .num { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .edge { font-size: 15px; font-weight: 600; fill: #4a5568; }
+    .note { font-size: 14px; fill: #718096; }
+  </style>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#ffffff"/>
+  <text x="48" y="54" class="h1">과제별 클라우드 비용 정산 — 아키텍처</text>
+  <text x="1552" y="54" class="sub" text-anchor="end">Cost Monitoring System · 2025.12 ~ 2026.03</text>
+
+  <!-- ① 수집 원천 -->
+  <rect x="40" y="76" width="1520" height="186" rx="14" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="64" y="106" class="layer" style="fill:#1d4ed8">수집 원천</text>
+  <rect x="64" y="120" width="356" height="126" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="84" y="150" class="bt">GPU·CPU 인스턴스</text>
+  <text x="84" y="178" class="bl">p5 · p4d · p4de · g5 · r7i · g4dn</text>
+  <text x="84" y="204" class="bl">수집 에이전트(60초 주기)</text>
+  <text x="84" y="230" class="bl">프로세스별 CPU·GPU 점유</text>
+  <rect x="436" y="120" width="356" height="126" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="456" y="150" class="bt">AWS CUR</text>
+  <text x="456" y="178" class="bl">시간별 비용 · Parquet</text>
+  <text x="456" y="204" class="bl">Savings Plans·RI 할인 반영</text>
+  <rect x="808" y="120" width="356" height="126" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="828" y="150" class="bt">S3 Inventory</text>
+  <text x="828" y="178" class="bl">주간 · 과제 디렉터리별 용량</text>
+  <text x="828" y="204" class="bl">월말 스냅샷으로 지난달 확정</text>
+  <rect x="1180" y="120" width="356" height="126" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="1200" y="150" class="bt">한국은행 ECOS</text>
+  <text x="1200" y="178" class="bl">일별 환율 API</text>
+  <text x="1200" y="204" class="bl">USD → KRW 정산</text>
+
+  <!-- ①→② -->
+  <line x1="242" y1="262" x2="242" y2="304" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <text x="256" y="290" class="edge">JSONL · 시간 파티션</text>
+  <line x1="614" y1="262" x2="614" y2="304" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <line x1="986" y1="262" x2="986" y2="304" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <path d="M1358,262 L1358,286 L1500,286 L1500,452" fill="none" stroke="#4a5568" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#ah)"/>
+
+  <!-- ② 데이터 레이크·질의 -->
+  <rect x="40" y="306" width="1420" height="112" rx="14" fill="#d1fae5" stroke="#6ee7b7"/>
+  <text x="64" y="336" class="layer" style="fill:#047857">S3 데이터 레이크 → Glue Crawler → Athena</text>
+  <rect x="64" y="350" width="440" height="52" rx="9" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="84" y="383" class="bl">프로세스 메트릭 테이블(시간 파티션)</text>
+  <rect x="520" y="350" width="440" height="52" rx="9" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="540" y="383" class="bl">CUR 테이블(연·월 파티션)</text>
+  <rect x="976" y="350" width="460" height="52" rx="9" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="996" y="383" class="bl">S3 인벤토리 테이블(과제별 용량)</text>
+
+  <!-- ②→③ -->
+  <line x1="420" y1="418" x2="420" y2="452" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- ③ 배분·제공 -->
+  <rect x="40" y="454" width="1520" height="132" rx="14" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="64" y="484" class="layer" style="fill:#b45309">배분 엔진과 대시보드</text>
+  <rect x="64" y="498" width="560" height="74" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="84" y="528" class="bt">backend-cost (Flask)</text>
+  <text x="84" y="556" class="bl">일·월 비용 API · 매핑 관리 · 캐시</text>
+  <line x1="624" y1="535" x2="684" y2="535" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <text x="654" y="525" class="note" text-anchor="middle">nginx</text>
+  <rect x="690" y="498" width="846" height="74" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="710" y="528" class="bt">React 대시보드</text>
+  <text x="710" y="556" class="bl">일·월 전환 · 과제·사용자·인스턴스별 · USD/KRW · 엑셀 6시트 · 매핑 설정 UI</text>
+
+  <!-- ④ 배분 로직 -->
+  <rect x="40" y="606" width="1520" height="250" rx="14" fill="#ede9fe" stroke="#c4b5fd"/>
+  <text x="64" y="636" class="layer" style="fill:#6d28d9">배분 로직</text>
+  <g>
+    <rect x="64" y="652" width="356" height="150" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <circle cx="94" cy="682" r="14" fill="#7c3aed"/><text x="94" y="687" class="num" text-anchor="middle">1</text>
+    <text x="118" y="688" class="bt">인스턴스 일 비용</text>
+    <text x="84" y="724" class="bl">CUR에서 인스턴스별 하루 비용</text>
+    <text x="84" y="750" class="bl">(Savings Plans·RI 할인 반영)</text>
+  </g>
+  <g>
+    <rect x="436" y="652" width="356" height="150" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <circle cx="466" cy="682" r="14" fill="#7c3aed"/><text x="466" y="687" class="num" text-anchor="middle">2</text>
+    <text x="490" y="688" class="bt">과제별 가중치</text>
+    <text x="456" y="724" class="mono">GPU: 샘플×max(CPU,10%)×(1+GPU수)</text>
+    <text x="456" y="750" class="mono">CPU: 샘플×max(CPU,1%)÷100</text>
+    <text x="456" y="776" class="note">점유 0이어도 프로세스가 있으면 최소 가중치</text>
+  </g>
+  <g>
+    <rect x="808" y="652" width="356" height="150" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <circle cx="838" cy="682" r="14" fill="#7c3aed"/><text x="838" y="687" class="num" text-anchor="middle">3</text>
+    <text x="862" y="688" class="bt">GPU·CPU 분리 배분</text>
+    <text x="828" y="724" class="bl">GPU 비용은 GPU 가중치로</text>
+    <text x="828" y="750" class="bl">CPU 비용은 CPU 가중치로 나눔</text>
+  </g>
+  <g>
+    <rect x="1180" y="652" width="356" height="150" rx="10" fill="#ffffff" stroke="#c4b5fd"/>
+    <circle cx="1210" cy="682" r="14" fill="#7c3aed"/><text x="1210" y="687" class="num" text-anchor="middle">4</text>
+    <text x="1234" y="688" class="bt">스토리지 배분</text>
+    <text x="1200" y="724" class="bl">S3: 인벤토리 용량 비율</text>
+    <text x="1200" y="750" class="bl">FSx: EC2 비용 비율</text>
+    <text x="1200" y="776" class="note">지난달은 월말 스냅샷으로 고정</text>
+  </g>
+  <text x="64" y="834" class="note">임시·시스템 디렉터리 같은 무효 과제명은 가중치 집계에서 제외 · GPU 프로세스가 없는 인스턴스의 GPU 비용은 미배분으로 표시</text>
+</svg>
