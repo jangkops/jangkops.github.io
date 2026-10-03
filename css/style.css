@@ -1109,6 +1109,7 @@ h1, h2, h3,
 }
 .arch-fig {
   display: block;
+  min-width: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -1123,6 +1124,7 @@ h1, h2, h3,
 .arch-fig img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;

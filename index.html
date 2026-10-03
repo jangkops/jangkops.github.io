@@ -96,7 +96,7 @@
         <div class="career-summary__intro">
           <p class="career-summary__eyebrow">ABOUT ME</p>
           <h3>GPU·AI 워크로드를 위한 플랫폼 엔지니어</h3>
-          <p>총 경력 4년이상의 AI/Cloud 플랫폼 엔지니어로, 신약 연구 조직의 AI 워크로드를 받치는 GPU 인프라를 도입 단계부터 운영까지 책임지고 있습니다. A100·H100 기반 온프레미스 클러스터와 AWS Capacity Block(p4d·p4de·p5)을 병행하는 하이브리드 구성을 설계했고, 최근에는 B300을 고밀도 랙과 함께 도입하는 건을 추진했습니다. 도입에 그치지 않고 관측·정산·보호 체계를 직접 구현해 GPU 자원의 가용성과 비용을 함께 관리합니다. 스토리지 계층에서는 S3 Intelligent-Tiering 정립과 prefix 단위 데이터 분류·정리로 월 S3 비용을 40%이상 절감했고, FSx for Lustre 마이그레이션으로 메타데이터 IOPS를 개선해 학습 중단 장애를 크게 줄였습니다. 온프레미스의 안정성과 클라우드 네이티브의 속도를 모두 경험했으며 0.3% 오차 미만의 GPU등 핵심 리소스의 복잡한 프로젝트별 일/월별 비용 정산 대시보드, Terraform 기반의 AWS Bedrock 생성형 AI 멀티모델 쿼터 게이트웨이 파이프라인 구축(배치 추론 경로로 단가 50% 절감), 90여 개 이상의 모델(GPT6 Astra, GPT5.6 Sol/Terra/Luna, Claude Fable5.1, Claude Opus5 등)을 병렬 호출·합의하는 AI 에이전틱 에디터 개발, Ansible 기반의 계정 관리 자동화 통합 플랫폼을 구축하여 운영 공수를 절감했습니다. GPU·스토리지 통합 관측 체계와 커널 수준 리소스 보호 정책으로 연구 인프라의 가용성을 확보했고, 대규모 금융권 레거시 백업 시스템 성능을 32% 개선하는 등 실질적인 기술 성과를 보유하고 있습니다. 운영 도구를 만드는 데서 멈추지 않고 클라우드 보안 표준과 계정 권한 관리 표준안을 직접 수립해 조직의 기준으로 제도화했습니다. AWS Generative AI Developer – Professional(2026), AWS DevOps Engineer – Professional(2025), CKA 등 담당 업무와 직결된 자격을 실무와 함께 유지하고 있습니다.</p>
+          <p>신약 연구 조직의 AI 인프라를 GPU 장비 수급 계약과 상면 전력·냉각 설계 같은 <b>물리 계층부터 LLM 게이트웨이와 에이전틱 애플리케이션까지 경계 없이 직접 설계하고 운영하는</b> 총 경력 4년이상의 AI/Cloud 플랫폼 엔지니어입니다. 자체 보유 자산은 <b>온프레미스 DGX A100(A100 8장) 한 대</b>뿐이며 나머지 GPU는 전량 <b>AWS Capacity Block</b>(p4d·p4de 각 A100 8장, g5, g4dn, H100 1장)으로 확보하는 하이브리드 구성을 설계했고, B300 고밀도 랙 도입은 물리 포트·케이블 회선 스펙과 상면 전력 용량, 냉각 방식(공랭·수랭), 물리 스위치·NAS 스토리지 구성까지 직접 확정하며 추진하고 있습니다. 도입에 그치지 않고 기존 GPU 장비에는 DCGM 커스텀 익스포터 기반 관측, 과제별 비용 정산, cgroup 리소스 쿼터와 OOM Guard 데몬 기반 노드 보호를 각각 독립된 시스템으로 구현해 GPU 자원의 가용성·비용·안정성을 분리해 관리합니다. 비용 측면에서는 S3 Intelligent-Tiering 정립과 prefix 단위 데이터 분류·정리로 월 S3 비용을 <b>40%이상 절감</b>하고, FSx for Lustre 마이그레이션으로 메타데이터 IOPS를 개선해 학습 중단 장애를 크게 줄였으며, Terraform 기반 AWS Bedrock 멀티모델 쿼터 게이트웨이로 <b>배치 추론 단가를 50% 절감</b>하고 과제별 클라우드 비용을 <b>오차율 0.3% 미만</b>으로 정산하는 체계를 만들었습니다. <b>LangGraph 멀티에이전트 오케스트레이션</b>과 <b>fastembed 임베딩·BM25 하이브리드 RAG</b>를 적용해 90여 개 이상의 모델(GPT6 Astra, GPT5.6 Sol/Terra/Luna, Claude Fable5.1, Claude Opus5 등)을 병렬 호출·합의하는 AI 에이전틱 에디터를 개발했고, Ansible 기반 계정 관리 자동화 통합 플랫폼을 구축했으며, 최근에는 <b>Claude Code와 OpenAI(ChatGPT · Codex) Enterprise의 전사 도입</b>을 기획·비용·보안까지 단독 전담해 연구원을 넘어 일반 사무직까지 AI 활용을 확산시켰습니다. 온프레미스의 안정성과 클라우드 네이티브의 속도를 모두 경험했으며, 클라우드 보안 표준과 계정 권한 관리 표준안을 직접 수립해 조직의 기준으로 제도화했습니다. 이전 경력에서는 대규모 금융권 레거시 백업 시스템 성능을 <b>32% 개선</b>했습니다. AWS Generative AI Developer – Professional(2026), AWS DevOps Engineer – Professional(2025), CKA 등 담당 업무와 직결된 자격을 실무와 함께 유지하고 있습니다.</p>
         </div>
         <div class="career-stats reveal-stagger">
           <article class="career-stat career-stat--text">
@@ -219,7 +219,7 @@
             <span class="timeline__period">2025.11 ~ 현재 (재직중)</span>
             <strong class="timeline__company">GC녹십자 목암생명과학연구소</strong>
             <span class="timeline__role">Infra Architect (정규직 연구원)</span>
-            <p class="timeline__desc">AWS 클라우드 인프라 설계 및 구축(OS, EC2, Organization, IAM Identity Center, Permission Set, Cross-AZ, VPC, Capacity Block GPU 자원 관리 등 Finops 요소 포함), 멀티모델 AI 에이전트 애플리케이션 개발 및 인프라 파이프라인 구현, GPU 실시간 리소스 모니터링 및 알림 전송체계(Prometheus & Grafana) 구축, S3 Intelligent-Tiering·수명주기 정책 정립과 FSx for Lustre 마이그레이션을 통한 스토리지 비용·성능 개선, 클라우드 보안 표준 및 인프라 계정 권한 관리 표준안 수립, ChatGPT Enterprise 전사 전환 설계·추진, 인프라 장애 대응, 온프레미스/클라우드 GPU 인프라 자원 도입 및 수급 계약</p>
+            <p class="timeline__desc">AWS 클라우드 인프라 설계 및 구축(OS, EC2, Organization, IAM Identity Center, Permission Set, Cross-AZ, VPC, Capacity Block GPU 자원 관리 등 Finops 요소 포함), 멀티모델 AI 에이전트 애플리케이션 개발 및 인프라 파이프라인 구현, GPU 실시간 리소스 모니터링 및 알림 전송체계(Prometheus & Grafana) 구축, S3 Intelligent-Tiering·수명주기 정책 정립과 FSx for Lustre 마이그레이션을 통한 스토리지 비용·성능 개선, 클라우드 보안 표준 및 인프라 계정 권한 관리 표준안 수립, Claude Code·OpenAI(ChatGPT · Codex) Enterprise 전사 도입 및 Azure M365 연동·보안 정책 수립, 인프라 장애 대응, 온프레미스/클라우드 GPU 인프라 자원 도입 및 수급 계약</p>
             <div class="chip-cloud">
               <span class="chip">AWS</span>
               <span class="chip">React</span>
@@ -293,6 +293,46 @@
       <p class="section__subtitle">Detailed Project Descriptions</p>
       <div class="project-detail-grid">
 
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.05 ~ 2026.09</span>
+            <strong>전사 AI 도구 도입 및 보안 정책 수립</strong>
+            <p>도구 선정부터 계약·비용·보안·배포·정착까지 전 과정을 단독 전담해 AI 활용을 연구 조직에서 전사로 확대</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>AI 활용이 연구 조직 일부에 머물러 있었습니다. 도구는 개인이 알아서 쓰는 상태였고, 코드·문서 유출 위험에 대한 조직 차원의 기준도 라이선스·비용 집행 구조도 없었습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>전사 확대와 보안 통제를 동시에 만족시켜야 했습니다. 쓰기 어려우면 아무도 쓰지 않고, 통제가 없으면 확대할 수 없다는 것이 전제였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span><b>Claude Code와 OpenAI(ChatGPT · Codex) Enterprise를 전사 도입</b>하고 <b>Azure Microsoft 365와 연동</b>해 기존 업무 환경에서 곧바로 쓸 수 있는 형태로 배포했습니다. 기획 단계에서 부서별 활용 시나리오와 요금제를 비교 검토해 라이선스 정책과 비용 집행 구조를 직접 설계했고, 보안 검토를 전담해 코드·문서 유출 위험을 <b>샌드박스 실행 환경과 접근 통제</b>로 차단한 뒤 그 기준을 사용 가이드에 반영해 함께 배포했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>사용 대상을 연구원에서 <b>일반 사무직까지 확대</b>해 문서 작성·데이터 정리·코드 작업 전반의 업무 효율을 높였습니다. 도구 선정·계약·비용·보안·배포·정착 전 과정을 한 사람이 전담해 조직 전체의 AI 활용 기준을 세웠습니다.</span>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">Claude Code</span>
+            <span class="chip">OpenAI ChatGPT Enterprise</span>
+            <span class="chip">OpenAI Codex</span>
+            <span class="chip">Azure</span>
+            <span class="chip">Microsoft 365</span>
+            <span class="chip">SSO 연동</span>
+            <span class="chip">샌드박스 격리</span>
+            <span class="chip">라이선스 정책</span>
+            <span class="chip">보안 가이드</span>
+          </div>
+        </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
           <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.04 ~ 2026.10</span>
@@ -450,6 +490,23 @@
               <span>월 S3 비용을 <b>30~40% 절감</b>했고, FSx 전환으로 메타데이터 IOPS가 개선되어 학습 중단 장애가 대폭 감소했습니다. 사용량이 prefix·과제·사용자 단위로 상시 노출되면서, 비용 증가를 사후 청구서가 아니라 발생 시점에 확인하고 대응할 수 있게 됐습니다.</span>
             </div>
           </div>
+          <div class="arch-figs">
+            <span class="arch-figs__label">Grafana 대시보드 — 클릭하면 원본이 열립니다 · 계정명과 과제명은 가렸습니다</span>
+            <div class="arch-figs__row">
+              <a class="arch-fig" href="assets/arch/storage-s3-overview.png" target="_blank" rel="noopener">
+                <img src="assets/arch/storage-s3-overview.png" alt="S3 프로젝트 디렉터리 모니터링 — 현재·비현재 총용량, 증가량, 7일 추이" loading="lazy" decoding="async">
+                <span>S3 디렉터리 모니터링</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/storage-fsx.png" target="_blank" rel="noopener">
+                <img src="assets/arch/storage-fsx.png" alt="FSx for Lustre 사용 현황 — 디스크 사용량, 경로별·사용자별 용량(사용자 계정명 가림)" loading="lazy" decoding="async">
+                <span>FSx 사용 현황</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/storage-s3-top10.png" target="_blank" rel="noopener">
+                <img src="assets/arch/storage-s3-top10.png" alt="S3 과제별·소유자별 용량 Top10과 최근 1시간 증가 Top10(과제명·계정명 가림)" loading="lazy" decoding="async">
+                <span>과제·소유자 Top10</span>
+              </a>
+            </div>
+          </div>
           <div class="chip-cloud" style="padding: 0 22px 22px;">
             <span class="chip">Amazon S3</span>
             <span class="chip">S3 Intelligent-Tiering</span>
@@ -461,6 +518,59 @@
             <span class="chip">DynamoDB</span>
             <span class="chip">Prometheus</span>
             <span class="chip">Grafana</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.02 ~ 2026.04</span>
+            <strong>GPU 운영 관측·정산·보호 체계 구축</strong>
+            <p>관측·정산·보호를 각각 독립된 시스템으로 구현해 GPU 자원의 가용성·비용·안정성을 분리해 관리</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>고가의 GPU가 들어온 뒤에도 누가 무엇을 얼마나 쓰는지 알 수 없었습니다. 한 사용자의 과점유가 노드 전체를 흔들어도 사후에야 파악됐고, 비용은 과제 단위로 귀속되지 않았습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>도입 이후의 운영을 <b>사람의 주의력에 맡기지 않는 것</b>이 목표였습니다. 관측·정산·보호를 서로 독립적으로 동작하는 시스템으로 분리해 하나가 멈춰도 나머지가 유지되게 만들어야 했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span><b>DCGM 커스텀 익스포터를 직접 개발</b>해 GPU 사용률과 프로세스 단위 점유를 수집하고 Prometheus에 적재한 뒤, Grafana 대시보드와 알림 전송 체계까지 구축했습니다. 수집한 지표를 과제별 비용 정산 대시보드와 연결해 GPU 사용량을 연구 과제 단위로 귀속시켰고, <b>cgroup 리소스 쿼터와 OOM Guard 데몬</b>으로 커널 수준의 노드 보호 정책을 적용했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>관측·정산·보호 3축을 모두 사내 운영에 투입했고 <b>세 시스템 모두 저장소로 공개</b>돼 있습니다. GPU 자원의 가용성·비용·안정성을 각각 독립된 시스템으로 관리할 수 있게 되었습니다.</span>
+            </div>
+          </div>
+          <div class="arch-figs">
+            <span class="arch-figs__label">Grafana 대시보드 — 클릭하면 원본이 열립니다 · 계정명과 과제명은 가렸습니다</span>
+            <div class="arch-figs__row">
+              <a class="arch-fig" href="assets/arch/gpu-obs-overview.png" target="_blank" rel="noopener">
+                <img src="assets/arch/gpu-obs-overview.png" alt="GPU 사용자 현황 대시보드 — 노드 CPU·메모리, GPU별 사용률과 상태(사용자 계정명 가림)" loading="lazy" decoding="async">
+                <span>GPU 사용자 현황</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/gpu-obs-cpu.png" target="_blank" rel="noopener">
+                <img src="assets/arch/gpu-obs-cpu.png" alt="사용자별 CPU 코어 사용량 추이(사용자 계정명 가림)" loading="lazy" decoding="async">
+                <span>사용자별 CPU 사용량</span>
+              </a>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">NVIDIA DCGM</span>
+            <span class="chip">DCGM Exporter(Custom)</span>
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">Alertmanager</span>
+            <span class="chip">cgroup</span>
+            <span class="chip">OOM Guard 데몬</span>
+            <span class="chip">Python</span>
+            <span class="chip">Linux</span>
           </div>
         </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
@@ -506,8 +616,8 @@
         <article class="project-detail-card project-detail-card--cloud reveal">
           <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 현재</span>
-            <strong>신약 연구용 GPU 인프라 도입 및 운영 체계 구축</strong>
-            <p>온프레미스 클러스터와 AWS Capacity Block을 병행하는 하이브리드 GPU 환경을 설계하고, 차세대 Blackwell 도입까지 주도</p>
+            <strong>신약 연구용 GPU 인프라 도입 및 하이브리드 환경 구축</strong>
+            <p>수급 계약부터 상면 전력·냉각과 물리 스위치·스토리지까지, 물리 계층을 직접 확정하며 하이브리드 GPU 환경을 설계</p>
           </div>
           <div class="project-detail-badges">
             <div class="pd-badge pd-badge--star-s">
@@ -523,12 +633,12 @@
             <div class="pd-badge pd-badge--star-a">
               <span class="pd-badge__mark">A</span>
               <strong>행동 (Action)</strong>
-              <span>A100·H100 기반 온프레미스 클러스터를 상시 학습용으로, AWS Capacity Block(p4d·p4de·p5)을 탄력 수요용으로 배치하는 하이브리드 구성을 설계하고 수급 계약과 도입 협상을 직접 수행했습니다. 최근에는 B300을 고밀도 랙과 함께 도입하는 건을 추진했습니다. 온프레미스 DGX A100은 드라이버 업그레이드 작업계획을 수립해 연구 일정과 충돌하지 않게 무중단 창구를 잡아 진행했습니다. 도입에서 멈추지 않고 운영 3축을 직접 구현했습니다 — DCGM 커스텀 익스포터 기반 GPU·프로세스 관측, 과제별 비용 정산 대시보드, cgroup 리소스 쿼터와 OOM Guard 데몬을 통한 노드 보호입니다.</span>
+              <span>자체 보유 자산은 <b>온프레미스 DGX A100(A100 8장) 한 대</b>뿐입니다. 나머지 GPU는 전량 <b>AWS Capacity Block</b>으로 확보해 — p4d·p4de(각 A100 8장)와 g5·g4dn, H100 1장 장비를 워크로드 성격에 맞춰 배치하는 하이브리드 구성을 설계하고 수급 계약과 도입 협상을 직접 수행했습니다. 온프레미스 DGX A100은 드라이버 업그레이드 작업계획을 수립해 연구 일정과 충돌하지 않게 무중단 창구를 잡아 진행했습니다. 현재는 <b>B300 고밀도 랙 도입</b>을 추진하며 계약에 그치지 않고 물리 계층을 직접 점검하고 있습니다 — 물리 포트와 케이블 회선 스펙, 상면 전력 용량과 냉각 방식(공랭·수랭)을 검토하고 이에 맞춘 물리 스위치·NAS 스토리지 구성까지 확정했습니다.</span>
             </div>
             <div class="pd-badge pd-badge--star-r">
               <span class="pd-badge__mark">R</span>
               <strong>결과 (Result)</strong>
-              <span>GPU 자원의 가용성·비용·안정성을 각각 독립된 시스템으로 관리할 수 있게 되었습니다. 세 시스템 모두 사내 운영 중이며 저장소로 공개돼 있습니다. 도입 협상부터 커널 수준 보호 정책까지 한 사람이 연결해 책임지는 구조를 만들었습니다.</span>
+              <span>워크로드 성격에 맞춰 자원을 나눠 배치해 확보 가능성과 비용을 동시에 충족했습니다. 수급 계약과 도입 협상부터 상면 전력·냉각과 물리 스위치·스토리지 구성까지 <b>계층을 가리지 않고 직접 결정하는 구조</b>를 만들었습니다.</span>
             </div>
           </div>
           <div class="chip-cloud" style="padding: 0 22px 22px;">
@@ -538,10 +648,12 @@
             <span class="chip">고밀도 랙</span>
             <span class="chip">On-prem DGX</span>
             <span class="chip">AWS Capacity Block</span>
-            <span class="chip">p5 · p4d · p4de</span>
-            <span class="chip">DCGM</span>
-            <span class="chip">Prometheus</span>
-            <span class="chip">cgroup</span>
+            <span class="chip">p4d · p4de</span>
+            <span class="chip">g5 · g4dn</span>
+            <span class="chip">상면 전력·공랭/수랭</span>
+            <span class="chip">물리 포트·케이블</span>
+            <span class="chip">물리 스위치</span>
+            <span class="chip">NAS 스토리지</span>
           </div>
         </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
