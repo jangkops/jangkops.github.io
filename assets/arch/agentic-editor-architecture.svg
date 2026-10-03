@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+  <title id="t">Mogam Works 아키텍처 — Electron 앱, FastAPI 사이드카, AWS Bedrock Gateway</title>
+  <desc id="d">Electron 렌더러와 메인 프로세스가 127.0.0.1:8765의 FastAPI 사이드카와 HTTP·SSE로 통신하고, 사이드카의 LangGraph 오케스트레이터가 Planner, 도메인 워커 5종, Aggregate, Evaluator로 작업을 나눠 실행한다. 모든 LLM 호출은 게이트웨이 클라이언트가 SigV4로 서명해 AWS Bedrock Gateway로 보낸다.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/>
+    </marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#059669"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'SUIT', 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', -apple-system, 'Segoe UI', sans-serif; fill: #1a1a2e; }
+    .h1 { font-size: 26px; font-weight: 800; }
+    .sub { font-size: 16px; fill: #718096; }
+    .layer { font-size: 20px; font-weight: 800; }
+    .bt { font-size: 19px; font-weight: 700; }
+    .bl { font-size: 16px; fill: #4a5568; }
+    .node { font-size: 17px; font-weight: 700; }
+    .chip { font-size: 15px; font-weight: 600; fill: #065f46; }
+    .edge { font-size: 15px; font-weight: 600; fill: #4a5568; }
+    .note { font-size: 14px; fill: #718096; }
+  </style>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#ffffff"/>
+
+  <!-- 제목 -->
+  <text x="48" y="54" class="h1">Mogam Works — Bedrock 멀티모델 오케스트레이션 워크스페이스</text>
+  <text x="1552" y="54" class="sub" text-anchor="end">아키텍처 개요 · 2026.04 ~ 2026.10</text>
+
+  <!-- ① Electron 데스크톱 앱 -->
+  <rect x="40" y="76" width="1520" height="164" rx="14" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="64" y="106" class="layer" fill="#1d4ed8" style="fill:#1d4ed8">Electron 데스크톱 앱</text>
+  <rect x="64" y="120" width="718" height="104" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="84" y="150" class="bt">Renderer · src/</text>
+  <text x="84" y="178" class="bl">Monaco 에디터 · 파일 탐색기 · xterm 터미널</text>
+  <text x="84" y="204" class="bl">AI 패널: 단일 · 병렬 · 합의, 모델 추천, 센터 뷰(구조·통계·Git)</text>
+  <rect x="818" y="120" width="718" height="104" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="838" y="150" class="bt">Main process · electron/</text>
+  <text x="838" y="178" class="bl">IPC 핸들러 · 파일 경로 가드 · CSP · 단일 인스턴스</text>
+  <text x="838" y="204" class="bl">SSO 로그인 → 자격증명을 사이드카에 직접 주입 · ssh2 원격</text>
+
+  <!-- ①↔② 연결 -->
+  <line x1="420" y1="240" x2="420" y2="292" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)" marker-start="url(#ah)"/>
+  <text x="436" y="272" class="edge">HTTP + SSE · 127.0.0.1:8765</text>
+  <line x1="1176" y1="292" x2="1176" y2="240" stroke="#4a5568" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#ah)"/>
+  <text x="1192" y="272" class="edge">브리지 HTTP(토큰) — 사이드카 → 앱</text>
+
+  <!-- ② FastAPI 사이드카 -->
+  <rect x="40" y="294" width="1520" height="352" rx="14" fill="#d1fae5" stroke="#6ee7b7"/>
+  <text x="64" y="324" class="layer" style="fill:#047857">FastAPI 사이드카 · ai_engine/</text>
+  <text x="1536" y="324" class="note" text-anchor="end">배포 시 PyInstaller로 동결 · 임베딩 모델 오프라인 번들</text>
+
+  <!-- LangGraph 그래프 속 그래프 -->
+  <rect x="64" y="340" width="1472" height="166" rx="10" fill="#ffffff" stroke="#34d399"/>
+  <text x="84" y="370" class="bt">LangGraph 오케스트레이터 — 그래프 속 그래프</text>
+  <text x="1516" y="370" class="note" text-anchor="end">워커마다 retrieve(RAG) → model → tools → verify</text>
+
+  <rect x="96" y="398" width="150" height="52" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="1.6"/>
+  <text x="171" y="430" class="node" text-anchor="middle">Planner</text>
+  <line x1="246" y1="424" x2="318" y2="424" stroke="#059669" stroke-width="2.2" marker-end="url(#ahg)"/>
+  <text x="282" y="414" class="note" text-anchor="middle">Send×N</text>
+
+  <rect x="324" y="402" width="118" height="44" rx="22" fill="#ffffff" stroke="#34d399" stroke-width="1.6"/>
+  <text x="383" y="430" class="chip" text-anchor="middle">coding</text>
+  <rect x="452" y="402" width="118" height="44" rx="22" fill="#ffffff" stroke="#34d399" stroke-width="1.6"/>
+  <text x="511" y="430" class="chip" text-anchor="middle">media</text>
+  <rect x="580" y="402" width="118" height="44" rx="22" fill="#ffffff" stroke="#34d399" stroke-width="1.6"/>
+  <text x="639" y="430" class="chip" text-anchor="middle">research</text>
+  <rect x="708" y="402" width="118" height="44" rx="22" fill="#ffffff" stroke="#34d399" stroke-width="1.6"/>
+  <text x="767" y="430" class="chip" text-anchor="middle">ops</text>
+  <rect x="836" y="402" width="118" height="44" rx="22" fill="#ffffff" stroke="#34d399" stroke-width="1.6"/>
+  <text x="895" y="430" class="chip" text-anchor="middle">chat</text>
+  <text x="639" y="474" class="note" text-anchor="middle">DAG 웨이브 단위 병렬 실행 · 미디어 도구는 직렬화</text>
+
+  <line x1="954" y1="424" x2="1020" y2="424" stroke="#059669" stroke-width="2.2" marker-end="url(#ahg)"/>
+  <rect x="1026" y="398" width="170" height="52" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="1.6"/>
+  <text x="1111" y="430" class="node" text-anchor="middle">Aggregate</text>
+  <line x1="1196" y1="424" x2="1262" y2="424" stroke="#059669" stroke-width="2.2" marker-end="url(#ahg)"/>
+  <rect x="1268" y="398" width="170" height="52" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="1.6"/>
+  <text x="1353" y="430" class="node" text-anchor="middle">Evaluator</text>
+  <path d="M1353,398 C1353,376 171,376 171,396" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ahg)"/>
+  <rect x="652" y="372" width="222" height="22" rx="4" fill="#ffffff"/>
+  <text x="763" y="388" class="note" text-anchor="middle" style="fill:#047857">목표 미달 → 재계획(최대 2회)</text>
+
+  <!-- 사이드카 하위 모듈 4개 -->
+  <rect x="64" y="522" width="356" height="108" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="84" y="552" class="bt">프로젝트 RAG</text>
+  <text x="84" y="580" class="bl">fastembed ONNX 384d + BM25</text>
+  <text x="84" y="606" class="bl">MMR 다양화 · 인용·근거 검증</text>
+
+  <rect x="436" y="522" width="356" height="108" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="456" y="552" class="bt">딥리서치(옵트인)</text>
+  <text x="456" y="580" class="bl">웹·학술 provider 8종 병렬 검색</text>
+  <text x="456" y="606" class="bl">RRF 랭킹 · 인용 검증 · 심화 루프</text>
+
+  <rect x="808" y="522" width="356" height="108" rx="10" fill="#ffffff" stroke="#6ee7b7"/>
+  <text x="828" y="552" class="bt">문서·이미지 생성</text>
+  <text x="828" y="580" class="bl">편집 가능한 PPTX 하이브리드 렌더</text>
+  <text x="828" y="606" class="bl">PDF · DOCX · XLSX · 이미지 best-of-N</text>
+
+  <rect x="1180" y="522" width="356" height="108" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+  <text x="1200" y="552" class="bt">게이트웨이 클라이언트</text>
+  <text x="1200" y="580" class="bl">SigV4 서명 · SSO · assume-role</text>
+  <text x="1200" y="606" class="bl">총 예산 · 만료 재시도 · 잡 폴링</text>
+
+  <!-- ②→③ 연결 -->
+  <line x1="1358" y1="630" x2="1358" y2="700" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ah)"/>
+  <text x="1374" y="672" class="edge">SigV4 HTTPS — 모든 LLM 호출</text>
+
+  <!-- ③ AWS Bedrock Gateway -->
+  <rect x="40" y="702" width="1520" height="142" rx="14" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="64" y="732" class="layer" style="fill:#b45309">AWS Bedrock Gateway</text>
+  <text x="1536" y="732" class="note" text-anchor="end">쿼터 게이트웨이 프로젝트에서 구축 · 사용자별 한도·감사</text>
+  <rect x="64" y="746" width="356" height="82" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="84" y="776" class="bt">API Gateway</text>
+  <text x="84" y="804" class="bl">/converse · /invoke · 비동기 잡</text>
+  <rect x="436" y="746" width="356" height="82" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="456" y="776" class="bt">Lambda Function URL</text>
+  <text x="456" y="804" class="bl">SSE 실시간 토큰 스트리밍</text>
+  <rect x="808" y="746" width="356" height="82" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="828" y="776" class="bt">ECS 워커 → Bedrock</text>
+  <text x="828" y="804" class="bl">장시간 추론 · 결과는 S3에 보관</text>
+  <rect x="1180" y="746" width="356" height="82" rx="10" fill="#ffffff" stroke="#fcd34d"/>
+  <text x="1200" y="776" class="bt">IAM BedrockUser-{이름}</text>
+  <text x="1200" y="804" class="bl">사용자별 허용 모델 · 월간 한도</text>
+
+  <text x="48" y="878" class="note">자격증명은 어떤 파일에도 저장하지 않음 · 외부 호출(옵트인): 리서치 provider · Vertex AI 이미지 · mermaid.ink</text>
+</svg>

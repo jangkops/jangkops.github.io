@@ -295,6 +295,135 @@
 
         <article class="project-detail-card project-detail-card--cloud reveal">
           <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.04 ~ 2026.10</span>
+            <strong>Bedrock 멀티모델 오케스트레이션 워크스페이스(Mogam Works) 설계·개발</strong>
+            <p>질문 하나를 여러 모델에 동시에 보내 비교·합의하고, LangGraph 멀티에이전트가 프로젝트 코드를 근거로 코드·문서·리서치 작업을 수행하는 데스크톱 AI 워크스페이스를 설계부터 릴리스 파이프라인까지 개발</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>Bedrock 게이트웨이로 LLM 호출의 비용·감사 통제는 세웠지만, 연구·개발 현장에서 여러 모델의 답을 나란히 비교하거나 답변이 실제 프로젝트 코드와 맞는지 확인할 도구가 없었습니다. 모델마다 SDK를 따로 붙이면 게이트웨이의 한도·감사 경로를 우회하게 되고, 근거 확인은 매번 사람의 몫으로 남았습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>모든 호출을 게이트웨이 한 경로로 묶어 통제를 유지하면서, 여러 모델을 한 화면에서 비교·합의하고 프로젝트를 이해한 에이전트가 실제 작업까지 수행하는 워크스페이스를 만드는 것이 목표였습니다. 하위 기능이 실패해도 요청 전체가 멈추지 않되, 실패가 조용히 묻히지 않아야 한다는 조건을 함께 세웠습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>Electron 앱과 FastAPI 사이드카로 나누고, 모든 LLM 호출을 <b>SigV4 서명 게이트웨이 클라이언트 하나</b>로 통일했습니다. 자격증명은 파일에 남기지 않고 SSO에서 받아 사용자별 역할을 assume하며, 총 예산·만료 재시도·비동기 잡 적응형 폴링을 이 한 곳에 모았습니다. 오케스트레이션은 LangGraph <b>그래프 속 그래프</b>로 설계해 Planner가 작업을 DAG로 나누면 도메인 워커 5종이 웨이브 단위로 병렬 실행하고, Evaluator가 목표 달성을 판정해 재계획합니다. 프로젝트 RAG는 외부 벡터 DB 없이 로컬 ONNX 다국어 임베딩(fastembed)과 BM25를 섞은 하이브리드 검색으로 만들고, 답변의 파일:줄 인용을 실제 검색 근거와 대조하는 검증 층을 얹었습니다. 하위 실패는 값으로 돌려 다음 후보를 시도하되, 요청이 끝날 때 선언한 의도와 실제 도구 호출을 대조하는 실행 장부로 조용한 실패를 드러냈습니다. 그 위에 옵트인 딥리서치(웹·학술 provider 8종), 편집 가능한 PPTX 생성, SSH 원격 개발을 통합했습니다.</span>
+            </div>
+            <div class="pd-badge">
+              <span class="pd-badge__mark">품질</span>
+              <strong>스펙 기반 개발과 릴리스 자동화</strong>
+              <span>기능마다 요구사항(EARS) → 설계(정합성 속성) → 작업 순서의 스펙 21개로 개발하고, fast-check·hypothesis 속성 기반 테스트로 불변식을 고정했습니다. push마다 Jest 전체와 Python 3.11·3.12 파싱·미정의 이름·import·오프라인 pytest 게이트가 돌고, 릴리스는 macOS·Windows 러너에서 PyInstaller 동결 → 임베딩 모델 오프라인 로드 검증 → 동결 백엔드 기동 스모크 → 설치 파일 패키징까지 자동화했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>모든 LLM 호출이 게이트웨이 한 경로를 지나 사용자별 한도·감사 안에서 동작하고, 앱은 어떤 파일에도 AWS 자격증명을 남기지 않습니다. 하이브리드 검색은 가중치를 골든 셋(30개 질의)으로 튜닝해 MRR을 <b>0.872 → 0.919</b>로 올렸고, 계획·평가 노드는 스트리밍 경로로 바꿔 같은 호출이 <b>35초 → 7.6초</b>로 줄었습니다. 릴리스 파이프라인은 macOS DMG와 Windows 설치 파일을 사람 손 없이 만들어 냅니다.</span>
+            </div>
+          </div>
+          <div class="arch-figs">
+            <span class="arch-figs__label">아키텍처·실행 화면 — 클릭하면 원본이 열립니다</span>
+            <div class="arch-figs__row">
+              <a class="arch-fig" href="assets/arch/agentic-editor-architecture.svg" target="_blank" rel="noopener">
+                <img src="assets/arch/agentic-editor-architecture.svg" alt="Mogam Works 아키텍처 — Electron 앱, FastAPI 사이드카(LangGraph 오케스트레이터·RAG·딥리서치), AWS Bedrock Gateway 3계층" loading="lazy" decoding="async">
+                <span>아키텍처</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/agentic-editor-parallel.png" target="_blank" rel="noopener">
+                <img src="assets/arch/agentic-editor-parallel.png" alt="멀티모델 병렬 실행 화면 — 10개 모델에 같은 질문을 보내 응답을 나란히 비교" loading="lazy" decoding="async">
+                <span>멀티모델 병렬 실행</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/agentic-editor-consensus.png" target="_blank" rel="noopener">
+                <img src="assets/arch/agentic-editor-consensus.png" alt="합의 도출 화면 — 병렬 응답을 상위 모델이 종합한 합의 결과" loading="lazy" decoding="async">
+                <span>합의 도출</span>
+              </a>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">AWS Bedrock</span>
+            <span class="chip">LangGraph</span>
+            <span class="chip">Multi-Agent</span>
+            <span class="chip">Hybrid RAG</span>
+            <span class="chip">fastembed (ONNX)</span>
+            <span class="chip">BM25</span>
+            <span class="chip">FastAPI · SSE</span>
+            <span class="chip">Electron</span>
+            <span class="chip">AWS SSO · SigV4</span>
+            <span class="chip">PyInstaller</span>
+            <span class="chip">GitHub Actions</span>
+            <span class="chip">Property-Based Testing</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.03 ~ 2026.07</span>
+            <strong>제약 AI 연구 환경을 위한 Bedrock 멀티모델 쿼터 게이트웨이 구축</strong>
+            <p>연구 속도를 죽이지 않으면서 조직 차원의 LLM 비용 통제를 성립시키는 게이트웨이를 Terraform으로 설계·구축</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>연구원들이 각자 자격증명으로 Bedrock을 호출하면 비용이 사후에야 드러나고 감사 추적도 불가능했습니다. 그렇다고 전면 승인제를 걸면 실험 사이클이 끊겨 연구 속도가 떨어지는 상충이 있었습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>통제와 속도 중 하나를 포기하지 않는 구조가 필요했습니다. 기존 SSO·CLI 사용 방식을 바꾸지 않으면서 한도·정책·정산을 호출 경로에 집어넣는 것이 목표였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>전면 승인제 대신 <b>Self-Service + 예외 승인</b> 모델을 택했습니다. 사용자별 월간 KRW 한도 이내에서는 승인 없이 즉시 호출하고, 초과분과 예외만 승인 대상으로 분리했습니다. API Gateway → Lambda 경로에서 정책·모델 접근·가격·한도를 순차 검증하고 DynamoDB ledger에 차감을 기록했습니다. API Gateway 타임아웃을 넘는 요청은 Step Functions + ECS Fargate 워커로 우회시키고 세마포어 테이블로 동시 실행을 제한했으며, 제출 시 상한 비용을 선점 기록한 뒤 완료 시 실제 비용으로 정산했습니다. 대량 오프라인 작업은 배치 추론 경로로 분리했습니다. 게이트웨이 리소스 전체는 Terraform으로 관리했습니다.</span>
+            </div>
+            <div class="pd-badge">
+              <span class="pd-badge__mark">확장</span>
+              <strong>사내 AI 도입 정책으로 확장</strong>
+              <span>게이트웨이 운영 경험을 바탕으로 조직 단위 AI 도구 도입까지 맡아 ChatGPT Enterprise 전환을 설계·추진했습니다. 자체 구축 게이트웨이(Bedrock)와 상용 SaaS(ChatGPT Enterprise)를 용도에 따라 나눠 쓰는 기준을 세우고, 연구원이 바로 쓸 수 있도록 로컬 환경 연동 가이드를 작성해 배포했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>연구원은 기존 워크플로를 그대로 유지한 채 한도 안에서 즉시 모델을 사용하고, 조직은 실시간 사용량과 감사 로그를 확보했습니다. 배치 추론 경로는 온디맨드 대비 <b>50% 할인 단가</b>가 적용되며, 입력 토큰을 사전 계산할 수 있어 실시간 경로보다 강한 한도 보장이 성립합니다.</span>
+            </div>
+          </div>
+          <div class="arch-figs">
+            <span class="arch-figs__label">아키텍처 자료 — 클릭하면 원본이 열립니다</span>
+            <div class="arch-figs__row">
+              <a class="arch-fig" href="assets/arch/bedrock-definition.png" target="_blank" rel="noopener">
+                <img src="assets/arch/bedrock-definition.png" alt="Bedrock 게이트웨이 아키텍처 정의 — Self-Service 쿼터 모델과 예외 승인 흐름" loading="lazy" decoding="async">
+                <span>아키텍처 정의</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/bedrock-full-flow.png" target="_blank" rel="noopener">
+                <img src="assets/arch/bedrock-full-flow.png" alt="Bedrock 게이트웨이 전체 플로우 — SSO 인증부터 Bedrock 호출·로깅까지 8단계" loading="lazy" decoding="async">
+                <span>전체 Flow</span>
+              </a>
+              <a class="arch-fig" href="assets/arch/bedrock-sequence.png" target="_blank" rel="noopener">
+                <img src="assets/arch/bedrock-sequence.png" alt="Bedrock 게이트웨이 호출 순서 — 정책·한도 검증과 응답 반환 시퀀스" loading="lazy" decoding="async">
+                <span>호출 순서</span>
+              </a>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">AWS Bedrock</span>
+            <span class="chip">Terraform</span>
+            <span class="chip">AWS StepFunctions</span>
+            <span class="chip">AWS Fargate</span>
+            <span class="chip">AWS Lambda</span>
+            <span class="chip">AWS API Gateway</span>
+            <span class="chip">AWS DynamoDB</span>
+            <span class="chip">AWS SES</span>
+            <span class="chip">CloudWatch Logs</span>
+            <span class="chip">IAM Identity Center</span>
+            <span class="chip">Python</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 현재</span>
             <strong>신약 연구용 GPU 인프라 도입 및 운영 체계 구축</strong>
             <p>온프레미스 클러스터와 AWS Capacity Block을 병행하는 하이브리드 GPU 환경을 설계하고, 차세대 Blackwell 도입까지 주도</p>
@@ -377,110 +506,6 @@
         </article>
         <article class="project-detail-card project-detail-card--cloud reveal">
           <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2026.03 ~ 2026.07</span>
-            <strong>제약 AI 연구 환경을 위한 Bedrock 멀티모델 쿼터 게이트웨이 구축</strong>
-            <p>연구 속도를 죽이지 않으면서 조직 차원의 LLM 비용 통제를 성립시키는 게이트웨이를 Terraform으로 설계·구축</p>
-          </div>
-          <div class="project-detail-badges">
-            <div class="pd-badge pd-badge--star-s">
-              <span class="pd-badge__mark">S</span>
-              <strong>상황 (Situation)</strong>
-              <span>연구원들이 각자 자격증명으로 Bedrock을 호출하면 비용이 사후에야 드러나고 감사 추적도 불가능했습니다. 그렇다고 전면 승인제를 걸면 실험 사이클이 끊겨 연구 속도가 떨어지는 상충이 있었습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-t">
-              <span class="pd-badge__mark">T</span>
-              <strong>과제 (Task)</strong>
-              <span>통제와 속도 중 하나를 포기하지 않는 구조가 필요했습니다. 기존 SSO·CLI 사용 방식을 바꾸지 않으면서 한도·정책·정산을 호출 경로에 집어넣는 것이 목표였습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-a">
-              <span class="pd-badge__mark">A</span>
-              <strong>행동 (Action)</strong>
-              <span>전면 승인제 대신 <b>Self-Service + 예외 승인</b> 모델을 택했습니다. 사용자별 월간 KRW 한도 이내에서는 승인 없이 즉시 호출하고, 초과분과 예외만 승인 대상으로 분리했습니다. API Gateway → Lambda 경로에서 정책·모델 접근·가격·한도를 순차 검증하고 DynamoDB ledger에 차감을 기록했습니다. API Gateway 타임아웃을 넘는 요청은 Step Functions + ECS Fargate 워커로 우회시키고 세마포어 테이블로 동시 실행을 제한했으며, 제출 시 상한 비용을 선점 기록한 뒤 완료 시 실제 비용으로 정산했습니다. 대량 오프라인 작업은 배치 추론 경로로 분리했습니다. 게이트웨이 리소스 전체는 Terraform으로 관리했습니다.</span>
-            </div>
-            <div class="pd-badge">
-              <span class="pd-badge__mark">확장</span>
-              <strong>사내 AI 도입 정책으로 확장</strong>
-              <span>게이트웨이 운영 경험을 바탕으로 조직 단위 AI 도구 도입까지 맡아 ChatGPT Enterprise 전환을 설계·추진했습니다. 자체 구축 게이트웨이(Bedrock)와 상용 SaaS(ChatGPT Enterprise)를 용도에 따라 나눠 쓰는 기준을 세우고, 연구원이 바로 쓸 수 있도록 로컬 환경 연동 가이드를 작성해 배포했습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-r">
-              <span class="pd-badge__mark">R</span>
-              <strong>결과 (Result)</strong>
-              <span>연구원은 기존 워크플로를 그대로 유지한 채 한도 안에서 즉시 모델을 사용하고, 조직은 실시간 사용량과 감사 로그를 확보했습니다. 배치 추론 경로는 온디맨드 대비 <b>50% 할인 단가</b>가 적용되며, 입력 토큰을 사전 계산할 수 있어 실시간 경로보다 강한 한도 보장이 성립합니다.</span>
-            </div>
-          </div>
-          <div class="arch-figs">
-            <span class="arch-figs__label">아키텍처 자료 — 클릭하면 원본이 열립니다</span>
-            <div class="arch-figs__row">
-              <a class="arch-fig" href="assets/arch/bedrock-definition.png" target="_blank" rel="noopener">
-                <img src="assets/arch/bedrock-definition.png" alt="Bedrock 게이트웨이 아키텍처 정의 — Self-Service 쿼터 모델과 예외 승인 흐름" loading="lazy" decoding="async">
-                <span>아키텍처 정의</span>
-              </a>
-              <a class="arch-fig" href="assets/arch/bedrock-full-flow.png" target="_blank" rel="noopener">
-                <img src="assets/arch/bedrock-full-flow.png" alt="Bedrock 게이트웨이 전체 플로우 — SSO 인증부터 Bedrock 호출·로깅까지 8단계" loading="lazy" decoding="async">
-                <span>전체 Flow</span>
-              </a>
-              <a class="arch-fig" href="assets/arch/bedrock-sequence.png" target="_blank" rel="noopener">
-                <img src="assets/arch/bedrock-sequence.png" alt="Bedrock 게이트웨이 호출 순서 — 정책·한도 검증과 응답 반환 시퀀스" loading="lazy" decoding="async">
-                <span>호출 순서</span>
-              </a>
-            </div>
-          </div>
-          <div class="chip-cloud" style="padding: 0 22px 22px;">
-            <span class="chip">AWS Bedrock</span>
-            <span class="chip">Terraform</span>
-            <span class="chip">AWS StepFunctions</span>
-            <span class="chip">AWS Fargate</span>
-            <span class="chip">AWS Lambda</span>
-            <span class="chip">AWS API Gateway</span>
-            <span class="chip">AWS DynamoDB</span>
-            <span class="chip">AWS SES</span>
-            <span class="chip">CloudWatch Logs</span>
-            <span class="chip">IAM Identity Center</span>
-            <span class="chip">Python</span>
-          </div>
-        </article>
-        <article class="project-detail-card project-detail-card--cloud reveal">
-          <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.12 ~ 2026.03</span>
-            <strong>과제별 클라우드 비용 가시성 확보 플랫폼 개발</strong>
-            <p>GPU 등 고가 자원의 사용량을 과제 단위로 귀속시켜 일/월별로 정산하는 FinOps 대시보드</p>
-          </div>
-          <div class="project-detail-badges">
-            <div class="pd-badge pd-badge--star-s">
-              <span class="pd-badge__mark">S</span>
-              <strong>상황 (Situation)</strong>
-              <span>GPU 인스턴스는 시간당 단가가 높아 사용 주체를 특정하지 못하면 비용이 통제 불가능해집니다. 기존에는 계정 단위 청구서만 있어 <b>어느 연구 과제가 얼마를 썼는지</b> 귀속시킬 수 없었습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-t">
-              <span class="pd-badge__mark">T</span>
-              <strong>과제 (Task)</strong>
-              <span>인스턴스 단위가 아니라 과제 단위로, 일별·월별 비용을 신뢰할 수 있는 정확도로 산출하는 체계를 만드는 것이 목표였습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-a">
-              <span class="pd-badge__mark">A</span>
-              <strong>행동 (Action)</strong>
-              <span>GPU·CPU 인스턴스에 60초 주기 수집 에이전트를 배포해 실사용 메트릭을 S3에 적재하고, AWS CUR 및 S3 Inventory와 결합했습니다. Glue Crawler로 카탈로그화한 뒤 Athena로 과제별 집계 쿼리를 구성하고, React 대시보드와 Flask 백엔드로 시각화했습니다. 환율은 한국은행 ECOS API를 연동해 원화 기준으로 정산했습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-r">
-              <span class="pd-badge__mark">R</span>
-              <strong>결과 (Result)</strong>
-              <span>과제별 일·월 비용을 <b>오차율 0.3% 미만</b>으로 정산하는 대시보드를 확보해, 연구 과제 단위의 비용 책임 추적이 가능해졌습니다.</span>
-            </div>
-          </div>
-          <div class="chip-cloud" style="padding: 0 22px 22px;">
-            <span class="chip">AWS CUR</span>
-            <span class="chip">AWS Glue</span>
-            <span class="chip">AWS Athena</span>
-            <span class="chip">AWS S3</span>
-            <span class="chip">S3 Inventory</span>
-            <span class="chip">Docker Agent</span>
-            <span class="chip">React</span>
-            <span class="chip">Python Flask</span>
-            <span class="chip">FinOps</span>
-          </div>
-        </article>
-        <article class="project-detail-card project-detail-card--cloud reveal">
-          <div class="project-detail-card__head">
             <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.11 ~ 2026.05</span>
             <strong>통합 계정관리 자동화 포털 개발</strong>
             <p>AWS 계정·GitHub 조직·연구 서버 계정의 수명주기를 하나의 승인 흐름으로 통합한 운영 플랫폼</p>
@@ -524,6 +549,86 @@
             <span class="chip">Redis</span>
             <span class="chip">Nginx</span>
             <span class="chip">Docker</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--cloud reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">GC녹십자 목암생명과학연구소 | 2025.12 ~ 2026.03</span>
+            <strong>과제별 클라우드 비용 가시성 확보 플랫폼 개발</strong>
+            <p>GPU 등 고가 자원의 사용량을 과제 단위로 귀속시켜 일/월별로 정산하는 FinOps 대시보드</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>GPU 인스턴스는 시간당 단가가 높아 사용 주체를 특정하지 못하면 비용이 통제 불가능해집니다. 기존에는 계정 단위 청구서만 있어 <b>어느 연구 과제가 얼마를 썼는지</b> 귀속시킬 수 없었습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>인스턴스 단위가 아니라 과제 단위로, 일별·월별 비용을 신뢰할 수 있는 정확도로 산출하는 체계를 만드는 것이 목표였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>GPU·CPU 인스턴스에 60초 주기 수집 에이전트를 배포해 실사용 메트릭을 S3에 적재하고, AWS CUR 및 S3 Inventory와 결합했습니다. Glue Crawler로 카탈로그화한 뒤 Athena로 과제별 집계 쿼리를 구성하고, React 대시보드와 Flask 백엔드로 시각화했습니다. 환율은 한국은행 ECOS API를 연동해 원화 기준으로 정산했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>과제별 일·월 비용을 <b>오차율 0.3% 미만</b>으로 정산하는 대시보드를 확보해, 연구 과제 단위의 비용 책임 추적이 가능해졌습니다.</span>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">AWS CUR</span>
+            <span class="chip">AWS Glue</span>
+            <span class="chip">AWS Athena</span>
+            <span class="chip">AWS S3</span>
+            <span class="chip">S3 Inventory</span>
+            <span class="chip">Docker Agent</span>
+            <span class="chip">React</span>
+            <span class="chip">Python Flask</span>
+            <span class="chip">FinOps</span>
+          </div>
+        </article>
+        <article class="project-detail-card project-detail-card--etc reveal">
+          <div class="project-detail-card__head">
+            <span class="project-detail-card__eyebrow">역량 강화 | 2024.12 ~ 2025.07</span>
+            <strong>엔드투엔드 GitOps 파이프라인 구축</strong>
+            <p>엑셈의 CI/CD 경험과 롯데손해보험의 안정성 운영 경험을 융합하여, IaC와 GitOps에 대한 깊이 있는 실무 역량 확보</p>
+          </div>
+          <div class="project-detail-badges">
+            <div class="pd-badge pd-badge--star-s">
+              <span class="pd-badge__mark">S</span>
+              <strong>상황 (Situation)</strong>
+              <span>엑셈의 CI/CD 경험과 롯데손해보험의 안정성 운영 경험을 융합하여, 현대적인 인프라 관리 패러다임인 IaC와 GitOps에 대한 깊이 있는 실무 역량을 확보하고자 프로젝트를 시작했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-t">
+              <span class="pd-badge__mark">T</span>
+              <strong>과제 (Task)</strong>
+              <span>퍼블릭 클라우드 환경에 인프라와 애플리케이션을 100% 코드로 관리하고, Git을 중심으로 한 선언적 배포 및 관측 가능성(Observability)이 확보된 운영 워크플로우를 구축하는 것이 목표였습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-a">
+              <span class="pd-badge__mark">A</span>
+              <strong>행동 (Action)</strong>
+              <span>Terraform(IaC)을 사용하여 AWS EKS 클러스터, VPC, ECR 등 모든 인프라 리소스를 코드로 정의하고 프로비저닝했습니다. GitHub Actions를 사용하여 애플리케이션 빌드 및 컨테이너 이미지 푸시까지의 CI 프로세스를 자동화했습니다. ArgoCD를 도입하여, Git 리포지토리의 Manifest 변경 사항을 감지하고 EKS 클러스터에 자동으로 동기화하는 CD(GitOps) 파이프라인을 완성했습니다. Prometheus와 Grafana를 통해 클러스터 및 애플리케이션의 핵심 지표를 수집하고 시각화하는 모니터링 시스템을 구축했으며, Elastic Stack을 연동하여 중앙화된 로그 관리 체계를 마련했습니다. 모든 인프라 및 애플리케이션 변경은 Pull Request 기반의 코드 리뷰를 통해서만 이루어지도록 프로세스를 확립했습니다.</span>
+            </div>
+            <div class="pd-badge pd-badge--star-r">
+              <span class="pd-badge__mark">R</span>
+              <strong>결과 (Result)</strong>
+              <span>엔드투엔드 GitOps 파이프라인을 성공적으로 구축하며 IaC와 선언적 배포, 그리고 관측 가능성(Observability)에 대한 이해와 실무 역량을 확보했습니다.</span>
+            </div>
+          </div>
+          <div class="chip-cloud" style="padding: 0 22px 22px;">
+            <span class="chip">AWS (EKS, ECR, VPC, IAM)</span>
+            <span class="chip">Terraform</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">GitHub Actions</span>
+            <span class="chip">GHCR</span>
+            <span class="chip">ArgoCD</span>
+            <span class="chip">Elastic Stack</span>
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
           </div>
         </article>
         <article class="project-detail-card project-detail-card--dev reveal">
@@ -633,46 +738,6 @@
             <span class="chip">Nexus Repository</span>
           </div>
         </article>
-        <article class="project-detail-card project-detail-card--etc reveal">
-          <div class="project-detail-card__head">
-            <span class="project-detail-card__eyebrow">역량 강화 | 2024.12 ~ 2025.07</span>
-            <strong>엔드투엔드 GitOps 파이프라인 구축</strong>
-            <p>엑셈의 CI/CD 경험과 롯데손해보험의 안정성 운영 경험을 융합하여, IaC와 GitOps에 대한 깊이 있는 실무 역량 확보</p>
-          </div>
-          <div class="project-detail-badges">
-            <div class="pd-badge pd-badge--star-s">
-              <span class="pd-badge__mark">S</span>
-              <strong>상황 (Situation)</strong>
-              <span>엑셈의 CI/CD 경험과 롯데손해보험의 안정성 운영 경험을 융합하여, 현대적인 인프라 관리 패러다임인 IaC와 GitOps에 대한 깊이 있는 실무 역량을 확보하고자 프로젝트를 시작했습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-t">
-              <span class="pd-badge__mark">T</span>
-              <strong>과제 (Task)</strong>
-              <span>퍼블릭 클라우드 환경에 인프라와 애플리케이션을 100% 코드로 관리하고, Git을 중심으로 한 선언적 배포 및 관측 가능성(Observability)이 확보된 운영 워크플로우를 구축하는 것이 목표였습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-a">
-              <span class="pd-badge__mark">A</span>
-              <strong>행동 (Action)</strong>
-              <span>Terraform(IaC)을 사용하여 AWS EKS 클러스터, VPC, ECR 등 모든 인프라 리소스를 코드로 정의하고 프로비저닝했습니다. GitHub Actions를 사용하여 애플리케이션 빌드 및 컨테이너 이미지 푸시까지의 CI 프로세스를 자동화했습니다. ArgoCD를 도입하여, Git 리포지토리의 Manifest 변경 사항을 감지하고 EKS 클러스터에 자동으로 동기화하는 CD(GitOps) 파이프라인을 완성했습니다. Prometheus와 Grafana를 통해 클러스터 및 애플리케이션의 핵심 지표를 수집하고 시각화하는 모니터링 시스템을 구축했으며, Elastic Stack을 연동하여 중앙화된 로그 관리 체계를 마련했습니다. 모든 인프라 및 애플리케이션 변경은 Pull Request 기반의 코드 리뷰를 통해서만 이루어지도록 프로세스를 확립했습니다.</span>
-            </div>
-            <div class="pd-badge pd-badge--star-r">
-              <span class="pd-badge__mark">R</span>
-              <strong>결과 (Result)</strong>
-              <span>엔드투엔드 GitOps 파이프라인을 성공적으로 구축하며 IaC와 선언적 배포, 그리고 관측 가능성(Observability)에 대한 이해와 실무 역량을 확보했습니다.</span>
-            </div>
-          </div>
-          <div class="chip-cloud" style="padding: 0 22px 22px;">
-            <span class="chip">AWS (EKS, ECR, VPC, IAM)</span>
-            <span class="chip">Terraform</span>
-            <span class="chip">Kubernetes</span>
-            <span class="chip">GitHub Actions</span>
-            <span class="chip">GHCR</span>
-            <span class="chip">ArgoCD</span>
-            <span class="chip">Elastic Stack</span>
-            <span class="chip">Prometheus</span>
-            <span class="chip">Grafana</span>
-          </div>
-        </article>
 
       </div>
     </div>
@@ -779,6 +844,57 @@
       <h2 class="section__title"><i class="fa-solid fa-map"></i> Knowledge Map</h2>
       <p class="section__subtitle">핵심 기술 도메인별 역량과 경험 범위입니다.</p>
       <div class="knowledge-grid reveal-stagger">
+        <div class="knowledge-card">
+          <span class="knowledge-card__eyebrow">AI · Multi-Agent</span>
+          <strong>LangGraph Orchestration</strong>
+          <p>Planner가 작업을 DAG로 나누고 도메인 워커가 병렬로 도구를 쓰며 Evaluator가 재계획하는 그래프 속 그래프 설계와, 여러 모델의 답을 비교·합의하는 실행 흐름</p>
+          <div class="chip-cloud">
+            <span class="chip">LangGraph</span>
+            <span class="chip">Planner · Worker · Evaluator</span>
+            <span class="chip">DAG 웨이브 병렬 실행</span>
+            <span class="chip">Tool Calling</span>
+            <span class="chip">상태 Reducer 설계</span>
+            <span class="chip">체크포인터</span>
+            <span class="chip">실행 장부(Effect Ledger)</span>
+            <span class="chip">MCP</span>
+            <span class="chip">멀티모델 병렬·합의</span>
+          </div>
+        </div>
+        <div class="knowledge-card">
+          <span class="knowledge-card__eyebrow">AI · Retrieval</span>
+          <strong>RAG &amp; Answer Verification</strong>
+          <p>외부 벡터 DB 없이 로컬 ONNX 임베딩과 BM25를 섞은 하이브리드 검색에, 인용·근거 검증과 딥리서치를 얹어 근거 있는 답을 만드는 파이프라인</p>
+          <div class="chip-cloud">
+            <span class="chip">fastembed (ONNX)</span>
+            <span class="chip">다국어 MiniLM 384d</span>
+            <span class="chip">BM25 하이브리드</span>
+            <span class="chip">MMR</span>
+            <span class="chip">RRF</span>
+            <span class="chip">LSA 폴백</span>
+            <span class="chip">인용 검증</span>
+            <span class="chip">Grounding 점수</span>
+            <span class="chip">LLM 충실도 평가</span>
+            <span class="chip">Deep Research</span>
+            <span class="chip">SSRF 방어</span>
+          </div>
+        </div>
+        <div class="knowledge-card">
+          <span class="knowledge-card__eyebrow">AI · Platform</span>
+          <strong>Gateway &amp; App Delivery</strong>
+          <p>SigV4·SSO 기반 모델 호출 경로와 사용자별 쿼터를 통제하고, Electron·FastAPI 앱을 동결 빌드와 크로스 OS 릴리스 CI로 출시하는 역량</p>
+          <div class="chip-cloud">
+            <span class="chip">Amazon Bedrock</span>
+            <span class="chip">SigV4 · SSO</span>
+            <span class="chip">사용자별 KRW 쿼터</span>
+            <span class="chip">SSE 스트리밍</span>
+            <span class="chip">비동기 잡 · 배치 추론</span>
+            <span class="chip">모델 능력 프로브</span>
+            <span class="chip">ChatGPT Enterprise</span>
+            <span class="chip">Electron · FastAPI</span>
+            <span class="chip">PyInstaller</span>
+            <span class="chip">크로스 OS 릴리스 CI</span>
+          </div>
+        </div>
         <div class="knowledge-card">
           <span class="knowledge-card__eyebrow">AWS</span>
           <strong>Cloud &amp; Infrastructure</strong>
@@ -936,14 +1052,12 @@
           </div>
         </div>
         <div class="knowledge-card">
-          <span class="knowledge-card__eyebrow">Messaging &amp; AI</span>
-          <strong>Kafka &amp; Open AI</strong>
-          <p>Apache Kafka 메시지 큐 운영과 ChatGPT/Bedrock 기반 AI 통합 경험</p>
+          <span class="knowledge-card__eyebrow">Messaging</span>
+          <strong>Apache Kafka</strong>
+          <p>Apache Kafka 메시지 큐 운영과 실습 랩 구성</p>
           <div class="chip-cloud">
             <span class="chip">Kafka (Apache)</span>
             <span class="chip">kafka-basics-lab</span>
-            <span class="chip">ChatGPT</span>
-            <span class="chip">Bedrock</span>
           </div>
         </div>
         <div class="knowledge-card">
